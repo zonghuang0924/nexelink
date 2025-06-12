@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>聯絡我們｜Nexelink</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at center, #0e101c, #05060a);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(20, 20, 30, 0.6);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      z-index: 1000;
+    }
+
+    nav .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #00e0ff;
+      text-shadow: 0 0 10px #00e0ff;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      position: relative;
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #00e0ff;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    .section {
+      padding: 120px 40px 80px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 32px;
+      color: #00e0ff;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba(0,255,255,0.4);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      background: rgba(255,255,255,0.03);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,255,255,0.1);
+    }
+
+    input, textarea {
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      font-size: 15px;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      box-shadow: 0 0 10px #00e0ff;
+    }
+
+    button {
+      padding: 12px;
+      background: #00e0ff;
+      color: #000;
+      font-weight: bold;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #00ffff;
+    }
+
+    .map-box {
+      margin-top: 40px;
+      width: 100%;
+      height: 300px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,255,255,0.1);
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(0, 255, 255, 0.3);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+      pointer-events: none;
+      z-index: 999;
+      transform: translate(-50%, -50%);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #11131a;
+      font-size: 14px;
+      color: #aaa;
+      margin-top: 100px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 滑鼠光圈 -->
+  <div class="cursor" id="cursor"></div>
+
+  <!-- 導覽列 -->
+  <nav>
+    <div class="logo">Nexelink</div>
+    <ul>
+      <li><a href="index.html">首頁</a></li>
+      <li><a href="about.html">關於</a></li>
+      <li><a href="services.html">服務</a></li>
+      <li><a href="contact.html">聯絡</a></li>
+    </ul>
+  </nav>
+
+  <!-- 聯絡區 -->
+  <div class="section">
+    <h2>聯絡我們</h2>
+    <form action="https://formspree.io/f/你的ID" method="POST">
+      <input type="text" name="name" placeholder="您的姓名" required />
+      <input type="email" name="email" placeholder="您的電子郵件" required />
+      <input type="text" name="subject" placeholder="主旨" />
+      <textarea name="message" rows="5" placeholder="請輸入您的訊息..." required></textarea>
+      <button type="submit">送出訊息</button>
+    </form>
+
+    <div class="map-box">
+      <!-- 嵌入 Google 地圖（可替換位置） -->
+      <iframe src="https://maps.google.com/maps?q=台北101&t=&z=14&ie=UTF8&iwloc=&output=embed"></iframe>
+    </div>
+  </div>
+
+  <!-- 頁尾 -->
+  <footer>
+    © 2025 Nexelink 數位創意整合 ｜ All rights reserved.
+  </footer>
+
+  <!-- 滑鼠動畫 -->
+  <script>
+    const cursor = document.getElementById("cursor");
+    document.addEventListener("mousemove", e => {
+      cursor.style.left = e.pageX + "px";
+      cursor.style.top = e.pageY + "px";
+    });
+  </script>
+
+</body>
+</html>
