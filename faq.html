@@ -4,48 +4,68 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>常見問題｜Nexelink</title>
-  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/components/css.css" />
   <style>
-    .section {
-      padding: 120px 40px 80px;
+    .faq-container {
       max-width: 900px;
-      margin: auto;
+      margin: 160px auto 80px;
+      padding: 0 24px;
+      color: #0b0358;
     }
-    h2 {
-      font-size: 32px;
+
+    .faq-title {
+      font-size: 36px;
+      margin-bottom: 40px;
+      text-align: center;
       color: #00e0ff;
-      margin-bottom: 30px;
-      text-shadow: 0 0 10px rgba(0,255,255,0.3);
+      text-shadow: 0 0 12px #00e0ff;
     }
-    details {
-      margin-bottom: 20px;
-      background: rgba(255,255,255,0.03);
-      padding: 20px;
-      border-radius: 10px;
+
+    .faq-box {
+      background: rgba(255, 255, 255, 0.03);
       border-left: 4px solid #00e0ff;
+      padding: 24px;
+      margin-bottom: 24px;
+      border-radius: 12px;
+      transition: background 0.3s;
     }
-    summary {
-      cursor: pointer;
+
+    .faq-box:hover {
+      background: rgba(0, 255, 255, 0.05);
+    }
+
+    .faq-question {
       font-size: 18px;
       font-weight: bold;
-      color: #00e0ff;
-    }
-    details[open] summary {
+      cursor: pointer;
       color: #00ffff;
+      transition: 0.2s;
     }
-    details p {
+
+    .faq-answer {
       margin-top: 10px;
-      color: #ddd;
       font-size: 15px;
+      line-height: 1.6;
+      color: #0aeea9;
+      display: none;
+    }
+
+    .faq-box.open .faq-answer {
+      display: block;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-
-  <!-- 光圈滑鼠效果 -->
+  <!-- 滑鼠特效 -->
   <script src="/components/cursor.js"></script>
 
-  <!-- 導入導覽列 -->
+  <!-- Navbar 導入 -->
   <div id="navbar"></div>
   <script>
     fetch("/components/navbar.html")
@@ -53,37 +73,46 @@
       .then(data => document.getElementById("navbar").innerHTML = data);
   </script>
 
-  <!-- FAQ 區塊 -->
-  <div class="section">
-    <h2>常見問題</h2>
+  <!-- FAQ 主內容 -->
+  <div class="faq-container">
+    <h1 class="faq-title">常見問題</h1>
 
-    <details>
-      <summary>Q：你們提供哪些服務？</summary>
-      <p>我們提供網站開發、影片剪輯、平面設計與腳本企劃等服務，皆可客製與選配。</p>
-    </details>
+    <div class="faq-box">
+      <div class="faq-question">Q：你們提供哪些服務？</div>
+      <div class="faq-answer">我們提供網站開發、影片剪輯、平面設計、腳本企劃等創意整合服務。</div>
+    </div>
 
-    <details>
-      <summary>Q：報價會隨需求變動嗎？</summary>
-      <p>是的，每個專案會根據所選功能、頁數、特效與交付時間進行動態估價。</p>
-    </details>
+    <div class="faq-box">
+      <div class="faq-question">Q：如何報價？</div>
+      <div class="faq-answer">根據專案內容與需求細項，我們會提供透明、客製化的報價單。</div>
+    </div>
 
-    <details>
-      <summary>Q：可以指定風格或提供範例嗎？</summary>
-      <p>可以，我們鼓勵客戶提供風格參考，讓我們的設計更貼近您的品牌形象。</p>
-    </details>
+    <div class="faq-box">
+      <div class="faq-question">Q：交件時間多久？</div>
+      <div class="faq-answer">一般為 5～15 個工作天，依專案複雜度與排程彈性調整。</div>
+    </div>
 
-    <details>
-      <summary>Q：有提供急件服務嗎？</summary>
-      <p>可額外收費安排優先處理，需與我們業務窗口確認交期與調度可行性。</p>
-    </details>
+    <div class="faq-box">
+      <div class="faq-question">Q：有急件處理嗎？</div>
+      <div class="faq-answer">可以安排急件，但需另計急件費並依當時人力可行性判斷。</div>
+    </div>
 
-    <details>
-      <summary>Q：如何付款？</summary>
-      <p>我們支援信用卡、Line Pay、銀行轉帳，並會提供報價單與正式發票。</p>
-    </details>
+    <div class="faq-box">
+      <div class="faq-question">Q：付款方式有哪些？</div>
+      <div class="faq-answer">支援銀行轉帳、信用卡、LINE Pay 等多元付款方式。</div>
+    </div>
   </div>
 
-  <!-- 導入頁尾 -->
+  <script>
+    document.querySelectorAll(".faq-question").forEach(q => {
+      q.addEventListener("click", () => {
+        const box = q.parentElement;
+        box.classList.toggle("open");
+      });
+    });
+  </script>
+
+  <!-- Footer 導入 -->
   <div id="footer"></div>
   <script>
     fetch("/components/footer.html")

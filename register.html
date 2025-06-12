@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>登入 / 註冊｜Nexelink</title>
+  <title>會員註冊｜Nexelink</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
@@ -34,7 +34,7 @@
       padding: 40px;
       border-radius: 12px;
       width: 90%;
-      max-width: 400px;
+      max-width: 420px;
       box-shadow: 0 0 20px rgba(0,255,255,0.1);
       backdrop-filter: blur(10px);
     }
@@ -86,11 +86,11 @@
 
     .toggle a {
       color: #00e0ff;
-      cursor: pointer;
+      text-decoration: none;
     }
 
-    .hidden {
-      display: none;
+    .toggle a:hover {
+      text-shadow: 0 0 5px #00ffff;
     }
   </style>
 </head>
@@ -99,52 +99,30 @@
   <!-- 🔵 滑鼠光圈 -->
   <div class="cursor" id="cursor"></div>
 
-  <!-- 🔐 登入／註冊表單 -->
+  <!-- 📝 註冊表單 -->
   <div class="form-box">
-    <h2 id="formTitle">會員登入</h2>
-
-    <form id="loginForm">
-      <input type="email" placeholder="電子郵件" required />
-      <input type="password" placeholder="密碼" required />
-      <button type="submit">登入</button>
-    </form>
-
-    <form id="register" class="hidden">
+    <h2>會員註冊</h2>
+    <form id="registerForm">
+      <input type="text" placeholder="名稱" required />
       <input type="email" placeholder="電子郵件" required />
       <input type="password" placeholder="密碼" required />
       <input type="password" placeholder="確認密碼" required />
+      <input type="phone" placeholder="電話" required />
+      <input type="adress" placeholder="地址" required />
       <button type="submit">註冊</button>
     </form>
-
-   <div class="toggle">
-  還沒有 Nexelink 帳號嗎？<a href="/register.html">立即註冊</a>
+    <div class="toggle">
+      已有帳號？<a href="/login.html">前往登入</a>
     </div>
+  </div>
 
-
-  <!-- 💡 JS 控制登入與註冊切換 -->
+  <!-- 滑鼠追蹤 -->
   <script>
     const cursor = document.getElementById("cursor");
     document.addEventListener("mousemove", (e) => {
       cursor.style.left = e.pageX + "px";
       cursor.style.top = e.pageY + "px";
     });
-
-    const loginForm = document.getElementById("loginForm");
-    const registerForm = document.getElementById("registerForm");
-    const toggleText = document.getElementById("toggleText");
-    const toggleLink = document.getElementById("toggleLink");
-    const formTitle = document.getElementById("formTitle");
-
-    toggleLink.onclick = () => {
-      const loginVisible = !loginForm.classList.contains("hidden");
-      loginForm.classList.toggle("hidden");
-      registerForm.classList.toggle("hidden");
-      formTitle.textContent = loginVisible ? "會員註冊" : "會員登入";
-      toggleText.innerHTML = loginVisible
-        ? '已有帳號？<a id="toggleLink">登入</a>'
-        : '還沒有帳號？<a id="toggleLink">註冊</a>';
-      location.reload(); // 重新載入才能重新綁定 click
-    };
   </script>
 
 </body>
