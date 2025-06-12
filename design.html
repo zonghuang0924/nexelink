@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>平面設計選配｜Nexelink</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at center, #0f101c, #05060a);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(20, 20, 30, 0.6);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      z-index: 1000;
+    }
+
+    nav .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #00e0ff;
+      text-shadow: 0 0 10px #00e0ff;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      position: relative;
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #00e0ff;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    .section {
+      padding: 120px 40px 80px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 32px;
+      color: #00e0ff;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba(0,255,255,0.4);
+    }
+
+    .form-group {
+      margin-bottom: 30px;
+    }
+
+    label {
+      font-size: 18px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .checkbox-group label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .price-box {
+      margin-top: 40px;
+      padding: 30px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.05);
+      font-size: 20px;
+      color: #00ffee;
+      text-shadow: 0 0 10px #00ffee;
+      text-align: center;
+    }
+
+    .cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(0, 255, 255, 0.3);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+      pointer-events: none;
+      z-index: 999;
+      transform: translate(-50%, -50%);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #11131a;
+      font-size: 14px;
+      color: #aaa;
+      margin-top: 100px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🎯 滑鼠特效 -->
+  <div class="cursor" id="cursor"></div>
+
+  <!-- 🔷 導覽列 -->
+  <nav>
+    <div class="logo">Nexelink</div>
+    <ul>
+      <li><a href="../index.html">首頁</a></li>
+      <li><a href="../about.html">關於</a></li>
+      <li><a href="../services.html">服務</a></li>
+      <li><a href="../contact.html">聯絡</a></li>
+    </ul>
+  </nav>
+
+  <!-- 🎨 平面設計選配內容 -->
+  <div class="section">
+    <h2>平面設計選配</h2>
+
+    <div class="form-group checkbox-group">
+      <label><input type="checkbox" class="design" value="4000" /> LOGO 設計（$4,000）</label>
+      <label><input type="checkbox" class="design" value="2000" /> 名片設計（$2,000）</label>
+      <label><input type="checkbox" class="design" value="3000" /> 社群圖片（$3,000）</label>
+      <label><input type="checkbox" class="design" value="3500" /> 海報或 Banner（$3,500）</label>
+    </div>
+
+    <div class="form-group checkbox-group">
+      <label><input type="checkbox" class="format" value="500" /> PDF 輸出（$500）</label>
+      <label><input type="checkbox" class="format" value="1000" /> AI 原始檔（$1,000）</label>
+      <label><input type="checkbox" class="format" value="300" /> PNG 透明圖（$300）</label>
+      <label><input type="checkbox" class="format" value="800" /> SVG 向量圖（$800）</label>
+    </div>
+
+    <div class="price-box" id="totalPrice">
+      總報價：$0
+    </div>
+  </div>
+
+  <!-- 🦾 頁尾 -->
+  <footer>
+    © 2025 Nexelink 數位創意整合 ｜ All rights reserved.
+  </footer>
+
+  <!-- 💡 JS 計算 -->
+  <script>
+    const cursor = document.getElementById("cursor");
+    document.addEventListener("mousemove", (e) => {
+      cursor.style.left = e.pageX + "px";
+      cursor.style.top = e.pageY + "px";
+    });
+
+    const designItems = document.querySelectorAll(".design");
+    const formatItems = document.querySelectorAll(".format");
+    const totalPriceBox = document.getElementById("totalPrice");
+
+    function calculatePrice() {
+      let total = 0;
+
+      designItems.forEach(item => {
+        if (item.checked) total += parseInt(item.value);
+      });
+
+      formatItems.forEach(item => {
+        if (item.checked) total += parseInt(item.value);
+      });
+
+      totalPriceBox.textContent = `總報價：$${total.toLocaleString()}`;
+    }
+
+    designItems.forEach(item => item.addEventListener("change", calculatePrice));
+    formatItems.forEach(item => item.addEventListener("change", calculatePrice));
+    window.onload = calculatePrice;
+  </script>
+
+</body>
+</html>

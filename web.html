@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>網站開發選配｜Nexelink</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at center, #0e101c, #05060a);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(20, 20, 30, 0.6);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      z-index: 1000;
+    }
+
+    nav .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #00e0ff;
+      text-shadow: 0 0 10px #00e0ff;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      position: relative;
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #00e0ff;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    .section {
+      padding: 120px 40px 80px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 32px;
+      color: #00e0ff;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px rgba(0,255,255,0.4);
+    }
+
+    .form-group {
+      margin-bottom: 30px;
+    }
+
+    label {
+      font-size: 18px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    select, input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      background: rgba(255,255,255,0.1);
+      color: white;
+    }
+
+    .price-box {
+      margin-top: 40px;
+      padding: 30px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.05);
+      font-size: 20px;
+      color: #00ffee;
+      text-shadow: 0 0 10px #00ffee;
+      text-align: center;
+    }
+
+    .cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(0, 255, 255, 0.3);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+      pointer-events: none;
+      z-index: 999;
+      transform: translate(-50%, -50%);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #11131a;
+      font-size: 14px;
+      color: #aaa;
+      margin-top: 100px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔵 滑鼠光圈 -->
+  <div class="cursor" id="cursor"></div>
+
+  <!-- 🔷 導覽列 -->
+  <nav>
+    <div class="logo">Nexelink</div>
+    <ul>
+      <li><a href="../index.html">首頁</a></li>
+      <li><a href="../about.html">關於</a></li>
+      <li><a href="../services.html">服務</a></li>
+      <li><a href="../contact.html">聯絡</a></li>
+    </ul>
+  </nav>
+
+  <!-- 🧩 網站選配內容 -->
+  <div class="section">
+    <h2>網站開發選配</h2>
+
+    <div class="form-group">
+      <label for="siteType">網站類型</label>
+      <select id="siteType">
+        <option value="10000">形象網站（$10,000）</option>
+        <option value="20000">電商網站（$20,000）</option>
+        <option value="30000">系統後台整合（$30,000）</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="pages">頁面數量</label>
+      <input type="number" id="pages" value="5" min="1" />
+    </div>
+
+    <div class="form-group">
+      <label for="functions">功能模組</label>
+      <select id="functions" multiple size="4">
+        <option value="3000">會員系統（$3,000）</option>
+        <option value="4000">購物車與金流（$4,000）</option>
+        <option value="2000">多語系切換（$2,000）</option>
+        <option value="3000">後台管理介面（$3,000）</option>
+      </select>
+    </div>
+
+    <div class="price-box" id="totalPrice">
+      總報價：$0
+    </div>
+  </div>
+
+  <!-- 🦾 頁尾 -->
+  <footer>
+    © 2025 Nexelink 數位創意整合 ｜ All rights reserved.
+  </footer>
+
+  <!-- 🧠 JS：自動報價邏輯 -->
+  <script>
+    const cursor = document.getElementById("cursor");
+    document.addEventListener("mousemove", (e) => {
+      cursor.style.left = e.pageX + "px";
+      cursor.style.top = e.pageY + "px";
+    });
+
+    const siteType = document.getElementById("siteType");
+    const pages = document.getElementById("pages");
+    const functions = document.getElementById("functions");
+    const totalPriceBox = document.getElementById("totalPrice");
+
+    function calculatePrice() {
+      let total = parseInt(siteType.value) || 0;
+      total += (parseInt(pages.value) || 1) * 1000;
+
+      for (let opt of functions.selectedOptions) {
+        total += parseInt(opt.value);
+      }
+
+      totalPriceBox.textContent = `總報價：$${total.toLocaleString()}`;
+    }
+
+    siteType.addEventListener("change", calculatePrice);
+    pages.addEventListener("input", calculatePrice);
+    functions.addEventListener("change", calculatePrice);
+
+    window.onload = calculatePrice;
+  </script>
+
+</body>
+</html>

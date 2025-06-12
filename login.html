@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>登入 / 註冊｜Nexelink</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #071018, #0f1a28);
+      color: #fff;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(0, 255, 255, 0.3);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+      pointer-events: none;
+      z-index: 999;
+      transform: translate(-50%, -50%);
+    }
+
+    .form-box {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 40px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 20px rgba(0,255,255,0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #00e0ff;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-size: 16px;
+    }
+
+    input:focus {
+      outline: none;
+      box-shadow: 0 0 10px #00e0ff;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      background: #00e0ff;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #00ffff;
+    }
+
+    .toggle {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    .toggle a {
+      color: #00e0ff;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔵 滑鼠光圈 -->
+  <div class="cursor" id="cursor"></div>
+
+  <!-- 🔐 登入／註冊表單 -->
+  <div class="form-box">
+    <h2 id="formTitle">會員登入</h2>
+
+    <form id="loginForm">
+      <input type="email" placeholder="電子郵件" required />
+      <input type="password" placeholder="密碼" required />
+      <button type="submit">登入</button>
+    </form>
+
+    <form id="registerForm" class="hidden">
+      <input type="email" placeholder="電子郵件" required />
+      <input type="password" placeholder="密碼" required />
+      <input type="password" placeholder="確認密碼" required />
+      <button type="submit">註冊</button>
+    </form>
+
+    <div class="toggle">
+      <span id="toggleText">還沒有帳號？<a id="toggleLink">註冊</a></span>
+    </div>
+  </div>
+
+  <!-- 💡 JS 控制登入與註冊切換 -->
+  <script>
+    const cursor = document.getElementById("cursor");
+    document.addEventListener("mousemove", (e) => {
+      cursor.style.left = e.pageX + "px";
+      cursor.style.top = e.pageY + "px";
+    });
+
+    const loginForm = document.getElementById("loginForm");
+    const registerForm = document.getElementById("registerForm");
+    const toggleText = document.getElementById("toggleText");
+    const toggleLink = document.getElementById("toggleLink");
+    const formTitle = document.getElementById("formTitle");
+
+    toggleLink.onclick = () => {
+      const loginVisible = !loginForm.classList.contains("hidden");
+      loginForm.classList.toggle("hidden");
+      registerForm.classList.toggle("hidden");
+      formTitle.textContent = loginVisible ? "會員註冊" : "會員登入";
+      toggleText.innerHTML = loginVisible
+        ? '已有帳號？<a id="toggleLink">登入</a>'
+        : '還沒有帳號？<a id="toggleLink">註冊</a>';
+      location.reload(); // 重新載入才能重新綁定 click
+    };
+  </script>
+
+</body>
+</html>

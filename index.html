@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nexelink ｜ 科技創意整合</title>
+  <style>
+    /* 🌌 共用視覺動畫 CSS */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at center, #0f111a, #07080f);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(20, 20, 30, 0.6);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    nav .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #00e0ff;
+      text-shadow: 0 0 10px #00e0ff;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: #00e0ff;
+      transition: 0.3s ease;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    footer {
+      background: #10131b;
+      padding: 30px;
+      text-align: center;
+      font-size: 14px;
+      color: #aaa;
+      border-top: 1px solid #222;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      background: linear-gradient(to right, #00e0ff, #44ffd2);
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 20px rgba(0,255,255,0.2);
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-top: 20px;
+      max-width: 600px;
+      color: #ccc;
+    }
+
+    canvas#stars {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(0, 255, 255, 0.3);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+      pointer-events: none;
+      z-index: 999;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🚀 自訂滑鼠光圈 -->
+  <div class="cursor" id="cursor"></div>
+
+  <!-- ✨ 星空背景動畫 -->
+  <canvas id="stars"></canvas>
+
+  <!-- 🚧 導覽列 -->
+  <nav>
+    <div class="logo">Nexelink</div>
+    <ul>
+      <li><a href="#">首頁</a></li>
+      <li><a href="#">關於</a></li>
+      <li><a href="#">服務</a></li>
+      <li><a href="#">聯絡</a></li>
+    </ul>
+  </nav>
+
+  <!-- 🌟 首頁主視覺 -->
+  <section class="hero">
+    <h1>讓創意成為你的科技推進器</h1>
+    <p>我們結合網站設計、影片剪輯、平面創作與腳本策略，打造屬於你的品牌未來。</p>
+  </section>
+
+  <!-- 📄 頁尾 -->
+  <footer>
+    © 2025 Nexelink 數位科技整合 ｜ All rights reserved.
+  </footer>
+
+  <!-- 🧠 JS 動畫邏輯 -->
+  <script>
+    // 星空動畫
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+
+    function initStars() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      stars = [];
+      for (let i = 0; i < 200; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          radius: Math.random() * 1.5,
+          speed: Math.random() * 0.5 + 0.2
+        });
+      }
+    }
+
+    function animateStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#00e0ff';
+      for (let star of stars) {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fill();
+        star.y += star.speed;
+        if (star.y > canvas.height) {
+          star.y = 0;
+          star.x = Math.random() * canvas.width;
+        }
+      }
+      requestAnimationFrame(animateStars);
+    }
+
+    window.addEventListener('resize', initStars);
+    initStars();
+    animateStars();
+
+    // 滑鼠光圈
+    const cursor = document.getElementById("cursor");
+    document.addEventListener("mousemove", (e) => {
+      cursor.style.left = e.pageX + "px";
+      cursor.style.top = e.pageY + "px";
+    });
+  </script>
+
+</body>
+</html>
