@@ -118,6 +118,18 @@
       z-index: 999;
       transform: translate(-50%, -50%);
     }
+
+    .fade-in-up {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .fade-in-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
   </style>
 </head>
 <body>
