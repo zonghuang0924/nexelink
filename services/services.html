@@ -134,16 +134,13 @@
   <!-- 🎯 滑鼠光圈 -->
   <div class="cursor" id="cursor"></div>
 
-  <!-- 🔷 導覽列 -->
-  <nav>
-    <div class="logo">Nexelink</div>
-    <ul>
-      <li><a href="../index.html">首頁</a></li>
-      <li><a href="../about.html">關於</a></li>
-      <li><a href="../services/services.html">服務</a></li>
-      <li><a href="../contact.html">聯絡</a></li>
-    </ul>
-  </nav>
+<!-- 載入 Nav -->
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("navbar").innerHTML = data);
+</script>
 
   <!-- 🚀 服務總覽區 -->
   <div class="section">
@@ -153,25 +150,28 @@
         <h3>網站開發</h3>
         <p>從企業官網、電商平台到系統後台，皆可客製設計與開發。</p>
       </div>
-      <div class="card" onclick="location.href='services/video.html'">
+      <div class="card" onclick="location.href='/workspaces/nexelink/services/video.html'">
         <h3>影片剪輯</h3>
         <p>商業宣傳片、動態字幕、特效剪輯，強化品牌影音表現力。</p>
       </div>
-      <div class="card" onclick="location.href='services/design.html'">
+      <div class="card" onclick="location.href='/workspaces/nexelink/services/design.html'">
         <h3>平面設計</h3>
         <p>Logo、名片、海報、社群圖片等完整視覺設計方案。</p>
       </div>
-      <div class="card" onclick="location.href='services/script.html'">
+      <div class="card" onclick="location.href='/workspaces/nexelink/services/script.html'">
         <h3>腳本企劃</h3>
         <p>商業腳本撰寫、創意劇本提案，提供內容創意火花。</p>
       </div>
     </div>
   </div>
 
-  <!-- 🦾 頁尾 -->
-  <footer>
-    © 2025 Nexelink 數位創意整合 ｜ All rights reserved.
-  </footer>
+ <!-- 載入 Footer -->
+<div id="footer"></div>
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("footer").innerHTML = data);
+</script>
 
   <!-- ✨ 滑鼠光圈 JS -->
   <script>

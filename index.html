@@ -128,16 +128,13 @@
   <!-- ✨ 星空背景動畫 -->
   <canvas id="stars"></canvas>
 
-  <!-- 🚧 導覽列 -->
-  <nav>
-    <div class="logo">Nexelink</div>
-    <ul>
-      <li><a href="/index.html">首頁</a></li>
-      <li><a href="/about.html">關於</a></li>
-      <li><a href="/services.html">服務</a></li>
-      <li><a href="/">聯絡</a></li>
-    </ul>
-  </nav>
+ <!-- 載入 Nav -->
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("navbar").innerHTML = data);
+</script>
 
   <!-- 🌟 首頁主視覺 -->
   <section class="hero">
@@ -145,10 +142,13 @@
     <p>我們結合網站設計、影片剪輯、平面創作與腳本策略，打造屬於你的品牌未來。</p>
   </section>
 
-  <!-- 📄 頁尾 -->
-  <footer>
-    © 2025 Nexelink 數位科技整合 ｜ All rights reserved.
-  </footer>
+<!-- 載入 Footer -->
+<div id="footer"></div>
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("footer").innerHTML = data);
+</script>
 
   <!-- 🧠 JS 動畫邏輯 -->
   <script>
