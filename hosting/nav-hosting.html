@@ -1,0 +1,47 @@
+<!-- Nexelink 託管專區導覽列 -->
+<style>
+  .hosting-nav {
+    display: flex;
+    justify-content: center;
+    background: rgba(0, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    padding: 20px;
+    border-radius: 20px;
+    margin: 40px auto;
+    max-width: 900px;
+    gap: 30px;
+    flex-wrap: wrap;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.15);
+  }
+
+  .hosting-nav a {
+    color: #00e0ff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+  }
+
+  .hosting-nav a:hover {
+    background: rgba(0, 255, 255, 0.1);
+    border-color: #00e0ff;
+  }
+
+  .hosting-nav a.active {
+    background: #00e0ff;
+    color: #000;
+    border-color: #00e0ff;
+    box-shadow: 0 0 15px #00e0ff66;
+  }
+</style>
+
+<div class="hosting-nav">
+  <a href="/hosting/dashboard.html" class="active">主控台</a>
+  <a href="/hosting/checkout.html">購買方案</a>
+  <a href="/hosting/server.html">伺服器管理</a>
+  <a href="/hosting/chat.html">即時支援</a>
+  <a href="/hosting/downloads.html">檔案下載</a>
+  <a href="/hosting/billing.html">帳單與記錄</a>
+</div>

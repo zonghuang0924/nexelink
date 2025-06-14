@@ -1,0 +1,43 @@
+<!-- Nexelink 託管認證徽章模組 -->
+<style>
+  .certified-badge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #00ffee;
+    color: #000;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .certified-badge i {
+    font-style: normal;
+  }
+
+  .avatar-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+
+  .avatar-wrapper img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 3px solid #00ffee;
+  }
+</style>
+
+<div class="avatar-wrapper">
+  <img src="/assets/avatar.jpg" alt="User Avatar">
+  <!-- 若使用者有資格，顯示此徽章 -->
+  <div class="certified-badge">
+    🪪 <i>已認證</i>
+  </div>
+</div>

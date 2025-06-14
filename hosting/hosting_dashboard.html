@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexelink Hosting 主控台</title>
+  <link rel="stylesheet" href="/css/global.css">
+  <link rel="stylesheet" href="/css/nav.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+  <script defer src="/js/nav.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at center, #0e101c, #05060a);
+      color: white;
+      padding: 120px 20px 80px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+    .section {
+      margin-bottom: 60px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 導覽列 -->
+  <div id="navbar"></div>
+  <script>
+    fetch("/components/nav-hosting.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("navbar").innerHTML = data);
+  </script>
+
+  <div class="container">
+    <!-- 若尚未購買的畫面 -->
+    <div id="emptyState"></div>
+    <script>
+      fetch("/components/dashboard/empty.html")
+        .then(res => res.text())
+        .then(html => document.getElementById("emptyState").innerHTML = html);
+    </script>
+
+    <!-- 認證徽章 (已購買才顯示) -->
+    <div id="certBadge"></div>
+    <script>
+      fetch("/components/dashboard/cert-badge.html")
+        .then(res => res.text())
+        .then(html => document.getElementById("certBadge").innerHTML = html);
+    </script>
+
+    <!-- 使用者主控卡片 -->
+    <div id="statusCard"></div>
+    <script>
+      fetch("/components/status-card.html")
+        .then(res => res.text())
+        .then(html => document.getElementById("statusCard").innerHTML = html);
+    </script>
+
+    <!-- 伺服器資訊卡 -->
+    <div id="serverCard"></div>
+    <script>
+      fetch("/components/server-card.html")
+        .then(res => res.text())
+        .then(html => document.getElementById("serverCard").innerHTML = html);
+    </script>
+
+    <!-- 主機方案選擇 -->
+    <div id="serverPlans"></div>
+    <script>
+      fetch("/components/dashboard/server-plans.html")
+        .then(res => res.text())
+        .then(html => document.getElementById("serverPlans").innerHTML = html);
+    </script>
+
+    <!-- 主機結帳畫面 -->
+    <div id="hostingCheckout"></div>
+    <script>
+      fetch("/components/dashboard/hosting-checkout.html")
+        .then(res => res.text())
+        .then(html => document.getElementById("hostingCheckout").innerHTML = html);
+    </script>
+
+    <!-- 下載區塊 -->
+    <div id="downloads"></div>
+    <script>
+      fetch("/components/downloads.html")
+        .then(res => res.text())
+        .then(html => document.getElementById("downloads").innerHTML = html);
+    </script>
+
+    <!-- 聊天區塊 -->
+    <div id="chat"></div>
+    <script>
+      fetch("/components/chat.html")
+        .then(res => res.text())
+        .then(html => document.getElementById("chat").innerHTML = html);
+    </script>
+
+    <!-- 帳單紀錄 -->
+    <div id="billing"></div>
+    <script>
+      fetch("/components/dashboard/billing.html")
+        .then(res => res.text())
+        .then(html => document.getElementById("billing").innerHTML = html);
+    </script>
+  </div>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+  <script>
+    fetch("/components/footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer").innerHTML = data);
+  </script>
+
+  <!-- Toast 通知 -->
+  <div id="toastContainer"></div>
+  <script>
+    fetch("/components/toast/notify.html")
+      .then(res => res.text())
+      .then(html => document.getElementById("toastContainer").innerHTML = html);
+
+    function showToast(message, duration = 3000) {
+      const toast = document.getElementById("toast");
+      const msg = document.getElementById("toast-message");
+      msg.textContent = message;
+      toast.style.display = "block";
+      toast.style.opacity = "1";
+      setTimeout(() => {
+        toast.style.opacity = "0";
+        setTimeout(() => {
+          toast.style.display = "none";
+        }, 500);
+      }, duration);
+    }
+  </script>
+</body>
+</html>

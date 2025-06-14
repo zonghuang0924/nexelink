@@ -1,0 +1,67 @@
+<!-- Nexelink 會員中心：訂單紀錄模組 -->
+<div style="padding: 40px; max-width: 1000px; margin: auto;">
+  <h2 style="color: #00ffee; margin-bottom: 20px; text-shadow: 0 0 8px rgba(0,255,255,0.4);">
+    📋 我的訂單紀錄
+  </h2>
+
+  <table style="width: 100%; border-collapse: collapse; background: rgba(255,255,255,0.03); border-radius: 12px; overflow: hidden; box-shadow: 0 0 15px rgba(0,255,255,0.1);">
+    <thead style="background: rgba(0,255,255,0.1); color: #00ffee;">
+      <tr>
+        <th style="padding: 12px;">訂單編號</th>
+        <th style="padding: 12px;">服務類型</th>
+        <th style="padding: 12px;">建立日期</th>
+        <th style="padding: 12px;">狀態</th>
+        <th style="padding: 12px;">操作</th>
+      </tr>
+    </thead>
+    <tbody id="orderTableBody">
+      <!-- 資料由 JS 動態插入 -->
+    </tbody>
+  </table>
+</div>
+
+<script>
+  // 模擬訂單資料（未連後端）
+  const orders = [
+    {
+      id: "ORD-001",
+      type: "Minecraft 主機 4GB",
+      date: "2025-06-12",
+      status: "已啟用",
+      link: "/dashboard/server001.html"
+    },
+    {
+      id: "ORD-002",
+      type: "MySQL 數據庫 20GB",
+      date: "2025-06-13",
+      status: "驗證中",
+      link: "#"
+    },
+    {
+      id: "ORD-003",
+      type: "NAS 共享空間 100GB",
+      date: "2025-06-14",
+      status: "待付款",
+      link: "#"
+    }
+  ];
+
+  const tbody = document.getElementById("orderTableBody");
+  orders.forEach(order => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td style="padding: 12px; color: #fff;">${order.id}</td>
+      <td style="padding: 12px; color: #fff;">${order.type}</td>
+      <td style="padding: 12px; color: #aaa;">${order.date}</td>
+      <td style="padding: 12px;">
+        <span style="color: ${order.status === '已啟用' ? '#00ff99' : order.status === '驗證中' ? '#ffcc00' : '#ff5555'}">
+          ${order.status}
+        </span>
+      </td>
+      <td style="padding: 12px;">
+        ${order.status === '已啟用' ? `<a href="${order.link}" style="color:#00ffee; text-decoration:underline;">前往控制台</a>` : '--'}
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+</script>

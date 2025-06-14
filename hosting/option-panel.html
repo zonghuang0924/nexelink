@@ -1,0 +1,35 @@
+<!-- 託管服務選配面板模組 -->
+<div class="form-group">
+  <label>託管類型</label>
+  <select id="type" required>
+    <option value="mc">Minecraft 主機</option>
+    <option value="mysql">MySQL 資料庫</option>
+    <option value="web">靜態網站</option>
+    <option value="nas">NAS 雲端儲存</option>
+  </select>
+</div>
+
+<div class="form-group">
+  <label>容量 / RAM</label>
+  <select id="capacity">
+    <option value="10" data-price="100">10GB / 2GB RAM</option>
+    <option value="50" data-price="300">50GB / 4GB RAM</option>
+    <option value="100" data-price="500">100GB / 8GB RAM</option>
+    <option value="200" data-price="800">200GB / 16GB RAM</option>
+  </select>
+</div>
+
+<div class="form-group">
+  <label>附加功能</label>
+  <div class="addons">
+    <label><input type="checkbox" data-price="100"> SSL 憑證</label>
+    <label><input type="checkbox" data-price="150"> 自訂網域</label>
+    <label><input type="checkbox" data-price="200"> FTP 存取</label>
+    <label><input type="checkbox" data-price="250"> 主控台介面</label>
+  </div>
+</div>
+
+<div class="form-group">
+  <label>備註或用途（選填）</label>
+  <input type="text" id="note" placeholder="例如：用於官網、伺服器插件測試..." />
+</div>
