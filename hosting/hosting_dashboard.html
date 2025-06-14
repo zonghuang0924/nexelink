@@ -4,10 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nexelink Hosting 主控台</title>
-  <link rel="stylesheet" href="/css/global.css">
-  <link rel="stylesheet" href="/css/nav.css">
+  <link rel="stylesheet" href="/components/css.css">
   <link rel="stylesheet" href="/css/dashboard.css">
-  <script defer src="/js/nav.js"></script>
+  <script defer src="/components/js.js"></script>
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -28,7 +27,7 @@
   <!-- 導覽列 -->
   <div id="navbar"></div>
   <script>
-    fetch("/components/nav-hosting.html")
+    fetch("/hosting/nav-hosting.html")
       .then(res => res.text())
       .then(data => document.getElementById("navbar").innerHTML = data);
   </script>
@@ -37,7 +36,7 @@
     <!-- 若尚未購買的畫面 -->
     <div id="emptyState"></div>
     <script>
-      fetch("/components/dashboard/empty.html")
+      fetch("/hosting/empty.html")
         .then(res => res.text())
         .then(html => document.getElementById("emptyState").innerHTML = html);
     </script>
@@ -45,7 +44,7 @@
     <!-- 認證徽章 (已購買才顯示) -->
     <div id="certBadge"></div>
     <script>
-      fetch("/components/dashboard/cert-badge.html")
+      fetch("/hosting/cert-badge.html")
         .then(res => res.text())
         .then(html => document.getElementById("certBadge").innerHTML = html);
     </script>
@@ -53,7 +52,7 @@
     <!-- 使用者主控卡片 -->
     <div id="statusCard"></div>
     <script>
-      fetch("/components/status-card.html")
+      fetch("/hosting/status-card.html")
         .then(res => res.text())
         .then(html => document.getElementById("statusCard").innerHTML = html);
     </script>
@@ -61,7 +60,7 @@
     <!-- 伺服器資訊卡 -->
     <div id="serverCard"></div>
     <script>
-      fetch("/components/server-card.html")
+      fetch("/hosting/server-card.html")
         .then(res => res.text())
         .then(html => document.getElementById("serverCard").innerHTML = html);
     </script>
@@ -69,7 +68,7 @@
     <!-- 主機方案選擇 -->
     <div id="serverPlans"></div>
     <script>
-      fetch("/components/dashboard/server-plans.html")
+      fetch("/hosting/server-plans.html")
         .then(res => res.text())
         .then(html => document.getElementById("serverPlans").innerHTML = html);
     </script>
@@ -77,7 +76,7 @@
     <!-- 主機結帳畫面 -->
     <div id="hostingCheckout"></div>
     <script>
-      fetch("/components/dashboard/hosting-checkout.html")
+      fetch("/hosting/hosting-checkout.html")
         .then(res => res.text())
         .then(html => document.getElementById("hostingCheckout").innerHTML = html);
     </script>
@@ -85,7 +84,7 @@
     <!-- 下載區塊 -->
     <div id="downloads"></div>
     <script>
-      fetch("/components/downloads.html")
+      fetch("/hosting/downloads.html")
         .then(res => res.text())
         .then(html => document.getElementById("downloads").innerHTML = html);
     </script>
@@ -93,7 +92,7 @@
     <!-- 聊天區塊 -->
     <div id="chat"></div>
     <script>
-      fetch("/components/chat.html")
+      fetch("/hosting/chat.html")
         .then(res => res.text())
         .then(html => document.getElementById("chat").innerHTML = html);
     </script>
@@ -101,7 +100,7 @@
     <!-- 帳單紀錄 -->
     <div id="billing"></div>
     <script>
-      fetch("/components/dashboard/billing.html")
+      fetch("/hosting/billing.html")
         .then(res => res.text())
         .then(html => document.getElementById("billing").innerHTML = html);
     </script>
@@ -118,7 +117,7 @@
   <!-- Toast 通知 -->
   <div id="toastContainer"></div>
   <script>
-    fetch("/components/toast/notify.html")
+    fetch("/hosting/notify.html")
       .then(res => res.text())
       .then(html => document.getElementById("toastContainer").innerHTML = html);
 
