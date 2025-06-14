@@ -140,77 +140,173 @@
     .then(data => document.getElementById("navbar").innerHTML = data);
 </script>
 
-  <!-- 🧩 網站選配內容 -->
-  <div class="section">
-    <h2>網站開發選配</h2>
+<div id="navbar">Nexelink 選配系統</div>
 
-    <div class="form-group">
-      <label for="siteType">網站類型</label>
-      <select id="siteType">
-        <option value="10000">形象網站（$10,000）</option>
-        <option value="20000">電商網站（$20,000）</option>
-        <option value="30000">系統後台整合（$30,000）</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="pages">頁面數量</label>
-      <input type="number" id="pages" value="5" min="1" />
-    </div>
-
-    <div class="form-group">
-      <label for="functions">功能模組</label>
-      <select id="functions" multiple size="4">
-        <option value="3000">會員系統（$3,000）</option>
-        <option value="4000">購物車與金流（$4,000）</option>
-        <option value="2000">多語系切換（$2,000）</option>
-        <option value="3000">後台管理介面（$3,000）</option>
-      </select>
-    </div>
-
-    <div class="price-box" id="totalPrice">
-      總報價：$0
-    </div>
+<section class="hero">
+  <div class="language-toggle">
+    <button onclick="setLanguage('zh')">繁體中文</button>
+    <button onclick="setLanguage('en')">English</button>
   </div>
+  <h2 data-lang-zh="網站功能選配系統" data-lang-en="Website Feature Selection">網站功能選配系統</h2>
+  <p data-lang-zh="勾選所需功能模組，系統將即時計算報價，並可下載 PDF 報價單。" data-lang-en="Select features to calculate the quote and download a PDF.">勾選所需功能模組，系統將即時計算報價，並可下載 PDF 報價單。</p>
+</section>
 
-<!-- 載入 Footer -->
-<div id="footer"></div>
+<section class="module-section">
+  <h3>網站頁面</h3>
+  <label><input type="checkbox" name="pageOption" data-name="1~3頁內" data-price="2500"> 1~3頁內（$2500/頁）</label>
+  <label><input type="checkbox" name="pageOption" data-name="4~5頁內" data-price="2300"> 4~5頁內（$2300/頁）</label>
+  <label>加頁數量：<input type="number" id="pageCount" min="0" value="0"></label>
+  <p>單價：<span id="unitPrice">0</span> 元 / 頁</p>
+  <p>總價：<span id="totalPrice">0</span> 元</p>
+
+  <h3>動畫特效</h3>
+  <label><input type="checkbox" data-name="滑入動畫" data-price="800"> 滑入動畫（$800）</label>
+  <label><input type="checkbox" data-name="圖片輪播" data-price="1000"> 圖片輪播（$1000）</label>
+  <label><input type="checkbox" data-name="滾動視差" data-price="1500"> Parallax（$1500）</label>
+  <label><input type="checkbox" data-name="數字動畫" data-price="900"> 數字遞增動畫（$900）</label>
+  <label><input type="checkbox" data-name="卡片特效" data-price="600"> 區塊卡片特效（$600）</label>
+
+  <h3>後端系統</h3>
+  <label><input type="checkbox" data-name="會員系統" data-price="3500"> 會員系統（$3500）</label>
+  <label><input type="checkbox" data-name="後台管理" data-price="4500"> 後台管理（$4500）</label>
+  <label><input type="checkbox" data-name="資料庫連接" data-price="3200"> 資料庫連接（$3200）</label>
+  <label><input type="checkbox" data-name="訂單系統" data-price="3800"> 訂單管理系統（$3800）</label>
+
+  <h3>整合串接</h3>
+  <label><input type="checkbox" data-name="Google 登入" data-price="1000"> Google 登入（$1000）</label>
+  <label><input type="checkbox" data-name="Line 登入" data-price="1200"> Line 登入（$1200）</label>
+  <label><input type="checkbox" data-name="金流串接" data-price="2800"> 金流串接（$2800）</label>
+  <label><input type="checkbox" data-name="Firebase 整合" data-price="2000"> Firebase 整合（$2000）</label>
+
+  <h3>AI 與擴充模組</h3>
+  <label><input type="checkbox" data-name="即時聊天室" data-price="3000"> 即時聊天室（$3000）</label>
+  <label><input type="checkbox" data-name="表單系統" data-price="1000"> 表單收集系統（$1000）</label>
+  <label><input type="checkbox" data-name="評論系統" data-price="1500"> 評論與星星評價（$1500）</label>
+  <label><input type="checkbox" data-name="AI 客服" data-price="3800"> AI 客服系統（$3800）</label>
+  <label><input type="checkbox" data-name="AI 表單助手" data-price="2500"> AI 表單助手（$2500）</label>
+
+  <h3>品牌與行銷</h3>
+  <label><input type="checkbox" data-name="Logo 設計" data-price="3000"> Logo 設計（$3000）</label>
+  <label><input type="checkbox" data-name="網站風格客製" data-price="1800"> 網站風格客製（$1800）</label>
+  <label><input type="checkbox" data-name="SEO 優化" data-price="1200"> SEO 優化（$1200）</label>
+  <label><input type="checkbox" data-name="進場動畫" data-price="1200"> 進場動畫（$1200）</label>
+</section>
+
+<section class="quote-section">
+  <h2>報價明細</h2>
+  <ul id="selected-list"></ul>
+  <p>總金額：<span id="total-price">0</span> 元</p>
+  <button onclick="downloadPDF()">📄 下載報價單 PDF</button>
+</section>
+
+<section class="form-section">
+  <h2>聯絡資訊</h2>
+  <form class="form-box">
+    <input type="text" placeholder="姓名" required />
+    <input type="email" placeholder="Email" required />
+    <textarea placeholder="補充需求或留言..." rows="4"></textarea>
+    <button type="submit">送出需求</button>
+  </form>
+</section>
+
 <script>
-  fetch("/components/footer.html")
-    .then(res => res.text())
-    .then(data => document.getElementById("footer").innerHTML = data);
-</script>
-
-  <!-- 🧠 JS：自動報價邏輯 -->
-  <script>
-    const cursor = document.getElementById("cursor");
-    document.addEventListener("mousemove", (e) => {
-      cursor.style.left = e.pageX + "px";
-      cursor.style.top = e.pageY + "px";
+  function setLanguage(lang) {
+    document.querySelectorAll('[data-lang-zh]').forEach(el => {
+      el.innerText = (lang === 'zh') ? el.getAttribute('data-lang-zh') : el.getAttribute('data-lang-en');
     });
+  }
 
-    const siteType = document.getElementById("siteType");
-    const pages = document.getElementById("pages");
-    const functions = document.getElementById("functions");
-    const totalPriceBox = document.getElementById("totalPrice");
+  document.querySelector(".form-box").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const name = this.querySelector('input[type="text"]').value;
+    const email = this.querySelector('input[type="email"]').value;
+    const message = this.querySelector('textarea').value;
+    const data = { name, email, message, time: new Date().toISOString() };
+    const logs = JSON.parse(localStorage.getItem("form_submissions") || "[]");
+    logs.push(data);
+    localStorage.setItem("form_submissions", JSON.stringify(logs));
+    alert("✅ 表單已儲存至後台模擬（localStorage）！");
+    this.reset();
+  });
 
-    function calculatePrice() {
-      let total = parseInt(siteType.value) || 0;
-      total += (parseInt(pages.value) || 1) * 1000;
+  const pageCheckboxes = document.querySelectorAll('input[name="pageOption"]');
+  const pageCountInput = document.getElementById("pageCount");
+  const unitPriceDisplay = document.getElementById("unitPrice");
+  const totalPriceDisplay = document.getElementById("total-price");
+  const selectedList = document.getElementById("selected-list");
+  let unitPagePrice = 0;
 
-      for (let opt of functions.selectedOptions) {
-        total += parseInt(opt.value);
-      }
-
-      totalPriceBox.textContent = `總報價：$${total.toLocaleString()}`;
+  function updatePagePrice() {
+    const count = parseInt(pageCountInput.value) || 0;
+    const total = count * unitPagePrice;
+    const existing = document.querySelector('#selected-list li[data-name="加頁"]');
+    if (existing) existing.remove();
+    if (count > 0 && unitPagePrice > 0) {
+      const li = document.createElement("li");
+      li.setAttribute("data-name", "加頁");
+      li.textContent = `加頁（${count}頁 × $${unitPagePrice}） - $${total}`;
+      li.setAttribute("data-price", total);
+      selectedList.appendChild(li);
     }
+    updateTotalPrice();
+  }
 
-    siteType.addEventListener("change", calculatePrice);
-    pages.addEventListener("input", calculatePrice);
-    functions.addEventListener("change", calculatePrice);
+  pageCheckboxes.forEach(cb => {
+    cb.addEventListener("change", () => {
+      pageCheckboxes.forEach(c => c !== cb && (c.checked = false));
+      unitPagePrice = cb.checked ? parseInt(cb.dataset.price) : 0;
+      unitPriceDisplay.textContent = unitPagePrice;
+      updatePagePrice();
+    });
+  });
+  pageCountInput.addEventListener("input", updatePagePrice);
 
-    window.onload = calculatePrice;
-  </script>
+  document.querySelectorAll('input[type="checkbox"]:not([name="pageOption"])').forEach(cb => {
+    cb.addEventListener("change", () => {
+      const name = cb.getAttribute("data-name");
+      const price = parseInt(cb.getAttribute("data-price"));
+      const existing = document.querySelector(`#selected-list li[data-name="${name}"]`);
+      if (cb.checked && !existing) {
+        const li = document.createElement("li");
+        li.setAttribute("data-name", name);
+        li.setAttribute("data-price", price);
+        li.textContent = `${name} - $${price}`;
+        selectedList.appendChild(li);
+      } else if (!cb.checked && existing) {
+        existing.remove();
+      }
+      updateTotalPrice();
+    });
+  });
 
+  function updateTotalPrice() {
+    const items = document.querySelectorAll("#selected-list li");
+    let total = 0;
+    items.forEach(item => {
+      total += parseInt(item.getAttribute("data-price")) || 0;
+    });
+    totalPriceDisplay.textContent = total;
+  }
+
+  function downloadPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    doc.setFontSize(16);
+    doc.text("Nexelink 選配報價單", 14, 20);
+    const rows = Array.from(document.querySelectorAll('#selected-list li')).map((li, i) => [
+      i + 1,
+      li.getAttribute('data-name'),
+      li.textContent.split('$')[1] + ' 元'
+    ]);
+    doc.autoTable({
+      head: [["#", "功能名稱", "價格"]],
+      body: rows,
+      startY: 30
+    });
+    const total = totalPriceDisplay.textContent;
+    doc.text(`總金額：${total} 元`, 14, doc.lastAutoTable.finalY + 10);
+    doc.save("nexelink-quote.pdf");
+  }
+</script>
 </body>
 </html>
