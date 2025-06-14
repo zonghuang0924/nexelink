@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>文創商品｜Nexelink</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #05060a, #0e101c);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(0, 255, 255, 0.3);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+    }
+
+    .product-section {
+      padding: 140px 40px 80px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .product-title {
+      font-size: 36px;
+      color: #00e0ff;
+      margin-bottom: 40px;
+      text-align: center;
+      text-shadow: 0 0 12px rgba(0, 255, 255, 0.5);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .product-card {
+      background: rgba(255, 255, 255, 0.04);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 255, 255, 0.1);
+      box-shadow: 0 0 18px rgba(0, 255, 255, 0.08);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .product-card .info {
+      padding: 20px;
+    }
+
+    .product-card .name {
+      font-size: 20px;
+      color: #00f0ff;
+      margin-bottom: 10px;
+    }
+
+    .product-card .desc {
+      font-size: 14px;
+      color: #ccc;
+      line-height: 1.5;
+    }
+
+    .product-card .price {
+      margin-top: 12px;
+      font-size: 16px;
+      color: #00ffee;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #11131a;
+      font-size: 14px;
+      color: #aaa;
+      margin-top: 100px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- 滑鼠炫光 -->
+<div class="cursor" id="cursor"></div>
+
+<!-- 導入 Nav -->
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("navbar").innerHTML = data);
+</script>
+
+<!-- 文創商品區 -->
+<section class="product-section">
+  <h2 class="product-title">Nexelink 文創商品</h2>
+
+  <div class="product-grid">
+    <!-- 商品 1 -->
+    <div class="product-card">
+      <img src="/assets/products/mug.jpg" alt="Nexelink 馬克杯">
+      <div class="info">
+        <div class="name">Nexelink 馬克杯</div>
+        <div class="desc">高質感陶瓷杯，印有 Nexelink 發光 Logo，適合辦公室與會議桌。</div>
+        <div class="price">NT$ 380</div>
+      </div>
+    </div>
+
+    <!-- 商品 2 -->
+    <div class="product-card">
+      <img src="/assets/products/tshirt.jpg" alt="Nexelink 科技T恤">
+      <div class="info">
+        <div class="name">科技感 Logo T-shirt</div>
+        <div class="desc">簡約科技風黑T，胸前燙銀 Logo，材質親膚透氣。</div>
+        <div class="price">NT$ 680</div>
+      </div>
+    </div>
+
+    <!-- 商品 3 -->
+    <div class="product-card">
+      <img src="/assets/products/mousepad.jpg" alt="滑鼠墊">
+      <div class="info">
+        <div class="name">RGB 邊框滑鼠墊</div>
+        <div class="desc">超大尺寸滑鼠墊，邊緣環繞 RGB 光效，搭配 Nexelink 數位紋路。</div>
+        <div class="price">NT$ 880</div>
+      </div>
+    </div>
+
+    <!-- 商品 4 -->
+    <div class="product-card">
+      <img src="/assets/products/sticker.jpg" alt="Logo 貼紙">
+      <div class="info">
+        <div class="name">Nexelink 透明貼紙</div>
+        <div class="desc">可貼於筆電、手機殼，採高透明防水材質，耐刮耐磨。</div>
+        <div class="price">NT$ 60</div>
+      </div>
+    </div>
+
+    <!-- 更多商品可以複製上方區塊 -->
+  </div>
+</section>
+
+<!-- 導入 Footer -->
+<div id="footer"></div>
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("footer").innerHTML = data);
+</script>
+
+<!-- 滑鼠動畫 -->
+<script>
+  document.addEventListener("mousemove", function (e) {
+    const cursor = document.getElementById("cursor");
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+  });
+</script>
+</body>
+</html>
