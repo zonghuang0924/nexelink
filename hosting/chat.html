@@ -77,7 +77,13 @@
 
 <!-- 按鈕 -->
 <button class="chat-button" onclick="toggleChat()">💬</button>
-
+ <!-- 載入 Nav -->
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("navbar").innerHTML = data);
+</script>
 <!-- 聊天框 -->
 <div class="chat-box" id="chatBox">
   <div class="chat-header">Nexelink 客服</div>
