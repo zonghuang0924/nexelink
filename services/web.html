@@ -5,126 +5,225 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>網站開發選配｜Nexelink</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: radial-gradient(circle at center, #0e101c, #05060a);
-      color: #fff;
-      overflow-x: hidden;
-    }
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(20, 20, 30, 0.6);
-      backdrop-filter: blur(10px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 40px;
-      z-index: 1000;
-    }
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #05060a 0%, #0f111d 100%);
+  color: #fff;
+  overflow-x: hidden;
+  position: relative;
+}
 
-    nav .logo {
-      font-size: 24px;
-      font-weight: bold;
-      color: #00e0ff;
-      text-shadow: 0 0 10px #00e0ff;
-    }
+/* 滑鼠炫光效果 */
+.cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(0, 255, 255, 0.2);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: screen;
+  transform: translate(-50%, -50%);
+}
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-    }
+/* 導覽列 */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(10, 10, 20, 0.8);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+}
 
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-size: 16px;
-      position: relative;
-    }
+nav .logo {
+  font-size: 26px;
+  font-weight: bold;
+  color: #00f6ff;
+  text-shadow: 0 0 12px #00f6ff;
+}
 
-    nav ul li a::after {
-      content: "";
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0%;
-      height: 2px;
-      background: #00e0ff;
-      transition: 0.3s;
-    }
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+}
 
-    nav ul li a:hover::after {
-      width: 100%;
-    }
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  position: relative;
+  transition: color 0.3s;
+}
 
-    .section {
-      padding: 120px 40px 80px;
-      max-width: 1000px;
-      margin: auto;
-    }
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #00f6ff;
+  transition: width 0.3s ease;
+}
 
-    h2 {
-      font-size: 32px;
-      color: #00e0ff;
-      margin-bottom: 20px;
-      text-shadow: 0 0 10px rgba(0,255,255,0.4);
-    }
+nav ul li a:hover {
+  color: #00f6ff;
+}
 
-    .form-group {
-      margin-bottom: 30px;
-    }
+nav ul li a:hover::after {
+  width: 100%;
+}
 
-    label {
-      font-size: 18px;
-      margin-bottom: 10px;
-      display: block;
-    }
+/* 主區塊 */
+.section,
+.module-section,
+.quote-section,
+.form-section {
+  padding: 140px 40px 80px;
+  max-width: 1000px;
+  margin: auto;
+  animation: fadeInUp 1s ease;
+}
 
-    select, input[type="number"] {
-      width: 100%;
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 8px;
-      border: none;
-      background: rgba(255,255,255,0.1);
-      color: white;
-    }
+/* 標題樣式 */
+h2 {
+  font-size: 34px;
+  color: #00e6ff;
+  margin-bottom: 24px;
+  text-shadow: 0 0 12px rgba(0, 255, 255, 0.5);
+}
 
-    .price-box {
-      margin-top: 40px;
-      padding: 30px;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.05);
-      font-size: 20px;
-      color: #00ffee;
-      text-shadow: 0 0 10px #00ffee;
-      text-align: center;
-    }
+h3 {
+  font-size: 26px;
+  color: #00ddff;
+  margin: 40px 0 20px;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.4);
+}
 
-    .cursor {
-      position: fixed;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: rgba(0, 255, 255, 0.3);
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
-      pointer-events: none;
-      z-index: 999;
-      transform: translate(-50%, -50%);
-    }
+/* 表單與選項 */
+label {
+  font-size: 18px;
+  display: block;
+  margin: 12px 0;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: background 0.3s;
+  cursor: pointer;
+}
 
-    footer {
-      text-align: center;
-      padding: 30px;
-      background: #11131a;
-      font-size: 14px;
-      color: #aaa;
-      margin-top: 100px;
-    }
+label:hover {
+  background: rgba(0, 255, 255, 0.08);
+}
+
+input[type="checkbox"] {
+  margin-right: 10px;
+  transform: scale(1.2);
+}
+
+/* 數量輸入 */
+input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+/* 報價區 */
+.price-box,
+.quote-section,
+#selected-list {
+  background: rgba(255, 255, 255, 0.04);
+  padding: 30px;
+  border-radius: 12px;
+  margin-top: 40px;
+  font-size: 20px;
+  color: #00ffee;
+  text-shadow: 0 0 10px #00ffee;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.1);
+}
+
+/* 按鈕樣式 */
+button {
+  padding: 12px 24px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #00ccff, #0077ff);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #00eeff, #3399ff);
+  transform: scale(1.05);
+}
+
+/* 表單 */
+.form-box {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: white;
+  border: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+textarea {
+  resize: none;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 30px;
+  background: #0b0d14;
+  font-size: 14px;
+  color: #aaa;
+  margin-top: 100px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* 滑入動畫 */
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
   </style>
 </head>
 <body>
