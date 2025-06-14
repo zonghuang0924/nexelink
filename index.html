@@ -129,6 +129,59 @@
         opacity: 1;
         transform: translateY(0);
     }
+    #floatingRocket {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  cursor: pointer;
+  animation: floatRocket 5s ease-in-out infinite;
+  z-index: 1000;
+}
+
+@keyframes floatRocket {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(3deg); }
+  100% { transform: translateY(0) rotate(-3deg); }
+}
+
+#gameModal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+#gameModal .game-frame {
+  position: relative;
+  width: 800px;
+  height: 600px;
+  box-shadow: 0 0 20px #0ff;
+}
+
+#gameModal iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 10px;
+}
+
+.close-btn {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: #0ff;
+  color: #000;
+  border: none;
+  border-radius: 50%;
+  padding: 6px 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
   </style>
 </head>
@@ -211,5 +264,25 @@
     });
   </script>
 
+  <!-- 火箭小圖案 -->
+  <img src="/assets/images/rocket.png" alt="Rocket" class="rocket" id="rocket">
+  <link rel="stylesheet" href="/assets/css/rocket.css">
+  <script src="/assets/js/rocket.js" defer></script>
+  <script>
+    const rocket = document.getElementById("floatingRocket");
+const gameModal = document.getElementById("gameModal");
+
+rocket.addEventListener("click", () => {
+  gameModal.style.display = "flex";
+});
+
+function closeGame() {
+  gameModal.style.display = "none";
+  // 重置 iframe
+  const iframe = gameModal.querySelector("iframe");
+  iframe.src = iframe.src;
+}
+
+  </script>
 </body>
 </html>
