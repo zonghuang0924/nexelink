@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>會員中心｜Nexelink</title>
+  <link rel="stylesheet" href="/assets/css/main.css" />
+  <link rel="stylesheet" href="/assets/css/user.css" />
+</head>
+<body>
+
+  <!-- ✅ 導覽列 -->
+  <div id="navbar"></div>
+  <script>
+    fetch("/components/navbar.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("navbar").innerHTML = data);
+  </script>
+
+  <main class="user-center">
+
+    <!-- ✅ 使用者資訊卡 -->
+    <section class="user-profile-card">
+      <div class="user-avatar">
+        <img src="/assets/user/avatar-default.png" alt="User Avatar" />
+        <img class="badge" src="/assets/icons/certified.svg" alt="認證徽章" title="已認證托管服務">
+      </div>
+      <div class="user-info">
+        <h2 class="username">Nexelink用戶</h2>
+        <p class="user-email">user@example.com</p>
+        <p class="joined-date">註冊時間：2025-06-01</p>
+      </div>
+    </section>
+
+    <!-- ✅ 我的服務 -->
+    <section class="my-services">
+      <h3>我的服務</h3>
+      <div class="service-cards">
+        <div class="service-card">
+          <h4>主機託管</h4>
+          <p>已啟用 Minecraft VPS</p>
+          <a href="/dashboard/hosting.html">前往管理</a>
+        </div>
+        <div class="service-card">
+          <h4>網站開發</h4>
+          <p>企業形象站專案進行中</p>
+          <a href="/project/website.html">查看進度</a>
+        </div>
+        <div class="service-card">
+          <h4>平面設計</h4>
+          <p>品牌LOGO已交付</p>
+          <a href="/downloads.html">前往下載</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ✅ 歷史帳單 -->
+    <section class="billing-history">
+      <h3>歷史帳單</h3>
+      <table>
+        <thead>
+          <tr><th>日期</th><th>項目</th><th>金額</th><th>狀態</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>2025/06/10</td><td>VPS 伺服器</td><td>$580</td><td class="paid">已付款</td></tr>
+          <tr><td>2025/05/28</td><td>網站設計</td><td>$8000</td><td class="unpaid">未付款</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ✅ 下載中心 -->
+    <section class="downloads">
+      <h3>下載中心</h3>
+      <ul>
+        <li>
+          <span>LOGO設計交付檔案.zip</span>
+          <a href="/downloads/logo-final.zip" download>📥 下載</a>
+        </li>
+        <li>
+          <span>網站首頁設計稿.pdf</span>
+          <a href="/downloads/homepage.pdf" download>📥 下載</a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ✅ 客服紀錄 -->
+    <section class="support-chat">
+      <h3>客服紀錄</h3>
+      <ul>
+        <li>
+          <strong>[進行中]</strong> 討論 LOGO 調整細節（2025/06/10）
+          <a href="/support/chat/123">查看</a>
+        </li>
+        <li>
+          <strong>[已結案]</strong> 伺服器卡頓問題回報（2025/05/30）
+          <a href="/support/chat/102">查看</a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ✅ 我的優惠券 -->
+    <section class="coupons">
+      <h3>我的優惠券</h3>
+      <div class="coupon-list">
+        <div class="coupon-card">
+          <h4>設計服務 10% OFF</h4>
+          <p>使用期限：2025/07/01</p>
+          <span class="coupon-code">NX-DESIGN10</span>
+        </div>
+        <div class="coupon-card expired">
+          <h4>VPS 折扣 $100</h4>
+          <p>已過期</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ✅ 帳號安全 -->
+    <section class="account-security">
+      <h3>帳號安全</h3>
+      <ul>
+        <li>🔒 更改密碼</li>
+        <li>📋 最近登入紀錄</li>
+        <li>🔑 雙重驗證：<span style="color:#0ff;">已啟用</span></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- ✅ 頁尾 -->
+  <div id="footer"></div>
+  <script>
+    fetch("/components/footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer").innerHTML = data);
+  </script>
+
+</body>
+</html>
