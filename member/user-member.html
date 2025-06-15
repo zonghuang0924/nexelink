@@ -4,18 +4,142 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>會員中心｜Nexelink</title>
-  <link rel="stylesheet" href="/assets/css/main.css" />
-  <link rel="stylesheet" href="/assets/css/user.css" />
+  <link rel="stylesheet" href="/components/css.css" />
 </head>
+<style>
+  <!-- 會員中心 CSS（可放 user.css 中）-->
+  .user-center {
+    max-width: 1080px;
+    margin: auto;
+    padding: 60px 20px;
+    font-family: 'Segoe UI', sans-serif;
+    color: #fff;
+  }
+  .user-profile-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #111c2f;
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    box-shadow: 0 0 20px rgba(0,255,255,0.1);
+  }
+  .user-avatar {
+    position: relative;
+  }
+  .user-avatar img {
+    width: 100px;
+    border-radius: 100%;
+    border: 3px solid #00f0ff;
+  }
+  .user-avatar .badge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 28px;
+  }
+  .service-cards, .coupon-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  .service-card, .coupon-card {
+    flex: 1 1 calc(33% - 20px);
+    background: #18263e;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,255,255,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .service-card:hover, .coupon-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(0,255,255,0.2);
+  }
+  table {
+    width: 100%;
+    background: #18263e;
+    border-radius: 12px;
+    border-collapse: collapse;
+    overflow: hidden;
+    margin-top: 20px;
+  }
+  th, td {
+    padding: 15px;
+    border-bottom: 1px solid #2b3b5a;
+  }
+  th {
+    background: #223654;
+    text-align: left;
+    color: #0ff;
+  }
+  .paid { color: #0f0; }
+  .unpaid { color: #f55; }
+  ul { padding-left: 0; list-style: none; }
+  ul li { padding: 10px 0; border-bottom: 1px solid #333; }
+  .downloads a, .support-chat a {
+    color: #00f0ff;
+    text-decoration: underline;
+  }
+  .expired { opacity: 0.5; }
+  .account-security ul li {
+    margin-bottom: 10px;
+  }
+  @media(max-width: 768px){
+    .service-card, .coupon-card {
+      flex: 1 1 100%;
+    }
+  }
+</style>
+
+<!-- JavaScript 動畫（滑入效果）-->
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        entry.target.classList.add('slide-in')
+        observer.unobserve(entry.target)
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('section').forEach(sec => {
+    sec.classList.add('hidden-section');
+    observer.observe(sec);
+  });
+</script>
+
+<style>
+  .hidden-section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .slide-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
 <body>
 
-  <!-- ✅ 導覽列 -->
-  <div id="navbar"></div>
-  <script>
-    fetch("/components/navbar.html")
-      .then(res => res.text())
-      .then(data => document.getElementById("navbar").innerHTML = data);
-  </script>
+  <!-- ✨ 星空背景動畫 -->
+  <canvas id="stars"></canvas>
+
+ <!-- 載入 Nav -->
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("navbar").innerHTML = data);
+</script>
+
+  <!-- 🌟 首頁主視覺 -->
+  <section class="hero">
+    <h1>讓創意成為你的科技推進器</h1>
+    <p>我們結合網站設計、影片剪輯、平面創作與腳本策略，打造屬於你的品牌未來。</p>
+  </section>
 
   <main class="user-center">
 
@@ -39,7 +163,7 @@
         <div class="service-card">
           <h4>主機託管</h4>
           <p>已啟用 Minecraft VPS</p>
-          <a href="/dashboard/hosting.html">前往管理</a>
+          <a href="/hosting/hosting_dashboard.html">前往管理</a>
         </div>
         <div class="service-card">
           <h4>網站開發</h4>
@@ -125,14 +249,12 @@
     </section>
 
   </main>
-
-  <!-- ✅ 頁尾 -->
+  <!-- 載入 Footer -->
   <div id="footer"></div>
   <script>
     fetch("/components/footer.html")
       .then(res => res.text())
       .then(data => document.getElementById("footer").innerHTML = data);
   </script>
-
 </body>
 </html>
