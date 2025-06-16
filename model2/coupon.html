@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>優惠碼｜小物商店</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f0f0;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    .section {
+      padding: 60px 30px;
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    label, input, button {
+      display: block;
+      width: 100%;
+      margin-top: 20px;
+      font-size: 1em;
+    }
+
+    input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      padding: 10px;
+      background-color: #25e9dc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 30px;
+      font-weight: bold;
+      color: green;
+      text-align: center;
+    }
+
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div><strong>小物商店</strong></div>
+    <nav>
+      <a href="/model2/index.html">首頁</a>
+      <a href="/model2/products.html">商品</a>
+      <a href="/model2/cart.html">購物車</a>
+      <a href="/model2/coupon.html">優惠碼</a>
+      <a href="/model2/order.html">訂單</a>
+    </nav>
+  </header>
+
+  <div class="section">
+    <h2>輸入優惠碼</h2>
+    <label for="code">請輸入優惠碼：</label>
+    <input type="text" id="code" placeholder="例如：SALE20" />
+    <button onclick="applyCoupon()">套用優惠</button>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <footer>
+    © 2025 小物商店 All rights reserved.
+  </footer>
+
+  <script>
+    function applyCoupon() {
+      const input = document.getElementById('code').value.trim().toUpperCase();
+      let discount = 0;
+      let message = '';
+
+      if (input === 'SALE20') {
+        discount = 0.8;
+        message = '優惠碼已套用：全部商品 8 折';
+      } else if (input === 'FREESHIP') {
+        discount = 0.95;
+        message = '優惠碼已套用：免運折扣（95 折）';
+      } else {
+        message = '無效的優惠碼';
+        discount = 1;
+      }
+
+      localStorage.setItem('discountRate', discount);
+      document.getElementById('result').textContent = message;
+    }
+  </script>
+
+</body>
+</html>
