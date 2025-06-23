@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>主機購買 - Nexelink</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #141e30, #243b55);
+      color: white;
+    }
+
+    main {
+      margin-left: 260px;
+      padding: 60px 40px 100px 40px;
+      max-width: 700px;
+    }
+
+    h1 {
+      font-size: 30px;
+      margin-bottom: 20px;
+      animation: floatIn 1s ease-out;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 12px rgba(0,255,255,0.1);
+      animation: floatIn 1s ease-out;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 4px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 12px;
+    }
+
+    .summary {
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    button {
+      padding: 12px 24px;
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+  <script>
+    // 模擬主機方案資料（可改為未來從後端載入）
+    const plans = {
+      basic: { name: "🌱 入門型 Basic", ram: "2GB", core: "1 vCore", price: 99 },
+      gamer: { name: "🔧 玩家型 Gamer", ram: "4GB", core: "2 vCore", price: 199 },
+      pro: { name: "🚀 進階型 Pro", ram: "6GB", core: "2 vCore", price: 299 },
+      ultimate: { name: "💎 頂規型 Ultimate", ram: "8GB", core: "4 vCore", price: 399 },
+    };
+
+    window.onload = () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const planKey = urlParams.get("plan");
+      const plan = plans[planKey] || plans["basic"];
+
+      document.getElementById("planName").textContent = plan.name;
+      document.getElementById("planSpec").textContent = `${plan.ram} / ${plan.core}`;
+      document.getElementById("planPrice").textContent = `NT$${plan.price} / 月`;
+    };
+
+    function submitOrder() {
+      alert("✅ 訂單已送出，感謝您的託管！");
+      window.location.href = "/web/index.html"; // 可替換為付款完成頁
+    }
+  </script>
+</head>
+<body>
+
+    <!-- 🔵 滑鼠光圈 -->
+    <div class="cursor" id="cursor"></div>
+
+    <!-- 載入 Nav -->
+    <div id="navbar"></div>
+    <script>
+        fetch("/components/navbar.html")
+            .then(res => res.text())
+            .then(data => document.getElementById("navbar").innerHTML = data);
+    </script>
+  <main>
+    <h1>🛒 訂購您的專屬伺服器</h1>
+
+    <div class="card">
+      <h2 id="planName">🌱 入門型 Basic</h2>
+      <p id="planSpec">2GB / 1 vCore</p>
+      <p id="planPrice">NT$99 / 月</p>
+    </div>
+
+    <div class="card">
+      <h3>使用者資訊</h3>
+      <label>Email（登入用）</label>
+      <input type="email" placeholder="your@email.com" required />
+
+      <label>使用者 ID（顯示名稱）</label>
+      <input type="text" placeholder="minecraft_username" required />
+    </div>
+
+    <div class="card">
+      <h3>付款方式</h3>
+      <select>
+        <option>信用卡（綠界付款）</option>
+        <option>LINE Pay</option>
+        <option>銀行轉帳</option>
+      </select>
+    </div>
+
+    <div class="card summary">
+      ✅ 確認您要購買的方案無誤後，點擊下方按鈕提交訂單，我們將盡快為您開設伺服器。
+    </div>
+
+    <button onclick="submitOrder()">確認購買</button>
+  </main>
+
+  <!-- 載入 Footer -->
+<div id="footer"></div>
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("footer").innerHTML = data);
+</script>
+</body>
+</html>

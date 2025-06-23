@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>訂單完成 - Nexelink</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #232526, #414345);
+      color: white;
+    }
+
+    main {
+      margin-left: 260px;
+      padding: 80px 40px 100px 40px;
+      max-width: 700px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 34px;
+      color: #00e5ff;
+      margin-bottom: 10px;
+      animation: floatIn 1s ease-out;
+    }
+
+    p {
+      font-size: 18px;
+      color: #cceeff;
+      margin-bottom: 30px;
+      animation: floatIn 1.2s ease-out;
+    }
+
+    .info-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 0 12px rgba(0,255,255,0.1);
+      margin-bottom: 40px;
+      animation: floatIn 1.4s ease-out;
+    }
+
+    .info-card h3 {
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+    .info-card p {
+      font-size: 16px;
+      margin: 4px 0;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      animation: floatIn 1.6s ease-out;
+    }
+
+    .actions button {
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      border: none;
+      color: white;
+      font-size: 16px;
+      padding: 12px 24px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .actions button:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+ <!-- 🔵 滑鼠光圈 -->
+  <div class="cursor" id="cursor"></div>
+
+  <!-- 載入 Nav -->
+    <div id="navbar"></div>
+    <script>
+    fetch("/components/navbar.html")
+        .then(res => res.text())
+        .then(data => document.getElementById("navbar").innerHTML = data);
+    </script>
+  <main>
+    <h1>✅ 訂單完成！</h1>
+    <p>感謝您使用 Nexelink 託管服務，我們正在為您部署伺服器，預計 5~15 分鐘內自動開通。</p>
+
+    <div class="info-card">
+      <h3>訂單摘要</h3>
+      <p>🖥️ 主機方案：進階型 Pro</p>
+      <p>📅 訂購日期：2025/06/23</p>
+      <p>📩 聯絡信箱：you@example.com</p>
+      <p>🌐 子網域將於開通後自動分配</p>
+    </div>
+
+    <div class="actions">
+      <button onclick="location.href='member.html'">前往會員中心</button>
+      <button onclick="location.href='index.html'">返回首頁</button>
+    </div>
+  </main>
+
+  <!-- 載入 Footer -->
+<div id="footer"></div>
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("footer").innerHTML = data);
+</script>
+</body>
+</html>

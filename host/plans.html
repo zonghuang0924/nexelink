@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>選擇主機方案 - Nexelink</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      color: white;
+    }
+
+    main {
+      margin-left: 260px;
+      padding: 60px 40px 100px 40px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 30px;
+      animation: floatIn 1s ease-out;
+    }
+
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .plan-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 14px;
+      padding: 24px;
+      text-align: center;
+      box-shadow: 0 0 12px rgba(0,255,255,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: floatIn 1s ease-out;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 16px rgba(0,255,255,0.3);
+    }
+
+    .plan-card h2 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .plan-card p {
+      font-size: 14px;
+      color: #cceeff;
+      margin: 8px 0;
+    }
+
+    .price {
+      font-size: 20px;
+      font-weight: bold;
+      color: #00d2ff;
+      margin: 14px 0;
+    }
+
+    .plan-card button {
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .plan-card button:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+    <!-- 🔵 滑鼠光圈 -->
+  <div class="cursor" id="cursor"></div>
+
+  <!-- 載入 Nav -->
+    <div id="navbar"></div>
+    <script>
+    fetch("/components/navbar.html")
+        .then(res => res.text())
+        .then(data => document.getElementById("navbar").innerHTML = data);
+    </script>
+  <main>
+    <h1>📦 選擇您的主機方案</h1>
+
+    <div class="plans">
+      <div class="plan-card">
+        <h2>🌱 入門型 Basic</h2>
+        <p>2GB RAM · 1 vCore · HDD</p>
+        <p>適合小型伺服器、好友遊玩</p>
+        <div class="price">NT$99 / 月</div>
+        <button onclick="location.href='checkout.html?plan=basic'">立即託管</button>
+      </div>
+
+      <div class="plan-card">
+        <h2>🔧 玩家型 Gamer</h2>
+        <p>4GB RAM · 2 vCore · SSD</p>
+        <p>支援多人、光影模組</p>
+        <div class="price">NT$199 / 月</div>
+        <button onclick="location.href='checkout.html?plan=gamer'">立即託管</button>
+      </div>
+
+      <div class="plan-card">
+        <h2>🚀 進階型 Pro</h2>
+        <p>6GB RAM · 2 vCore · NVMe SSD</p>
+        <p>穩定高效、附加備份</p>
+        <div class="price">NT$299 / 月</div>
+        <button onclick="location.href='checkout.html?plan=pro'">立即託管</button>
+      </div>
+
+      <div class="plan-card">
+        <h2>💎 頂規型 Ultimate</h2>
+        <p>8GB RAM · 4 vCore · NVMe SSD</p>
+        <p>大型伺服器、活動服首選</p>
+        <div class="price">NT$399 / 月</div>
+        <button onclick="location.href='checkout.html?plan=ultimate'">立即託管</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- 載入 Footer -->
+<div id="footer"></div>
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("footer").innerHTML = data);
+</script>
+</body>
+</html>
