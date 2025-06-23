@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>子帳號管理 - Nexelink</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+    }
+
+    main {
+      margin-left: 260px;
+      padding: 40px 30px 100px 30px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      animation: floatIn 1s ease-out;
+    }
+
+    .subuser-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .user-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 12px rgba(0,255,255,0.08);
+      animation: floatIn 0.8s ease-out;
+      transition: transform 0.2s ease;
+    }
+
+    .user-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 14px rgba(0,255,255,0.2);
+    }
+
+    .user-name {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .user-info {
+      font-size: 14px;
+      color: #aaffff;
+      margin-bottom: 10px;
+    }
+
+    .user-actions button {
+      padding: 6px 12px;
+      font-size: 13px;
+      margin-right: 6px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: #00d2ff;
+      color: white;
+      transition: transform 0.2s;
+    }
+
+    .user-actions button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 8px #00d2ff;
+    }
+
+    .user-actions .remove {
+      background: crimson;
+    }
+
+    .add-form {
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 12px;
+      animation: floatIn 1s ease-out;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: white;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    button.submit-btn {
+      margin-top: 20px;
+      background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 導覽列 -->
+  <iframe src="/hosting/nav.html" style="position: fixed; top: 0; left: 0; width: 240px; height: 100vh; border: none;"></iframe>
+
+  <main>
+    <h1>👤 子帳號管理</h1>
+
+    <div class="subuser-grid">
+      <div class="user-card">
+        <div class="user-name">hannah@staff</div>
+        <div class="user-info">權限：控制台 / 插件管理<br/>最近登入：2 天前</div>
+        <div class="user-actions">
+          <button>編輯</button>
+          <button class="remove">移除</button>
+        </div>
+      </div>
+
+      <div class="user-card">
+        <div class="user-name">devops@team</div>
+        <div class="user-info">權限：檔案存取 / 控制台<br/>最近登入：5 小時前</div>
+        <div class="user-actions">
+          <button>編輯</button>
+          <button class="remove">移除</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="add-form">
+      <h2 style="margin-top: 0;">➕ 新增子帳號</h2>
+
+      <label>電子郵件 / 帳號名稱</label>
+      <input type="email" placeholder="example@domain.com"/>
+
+      <label>設定初始密碼</label>
+      <input type="password" placeholder="********"/>
+
+      <label>選擇權限</label>
+      <select multiple>
+        <option>控制台操作</option>
+        <option>插件管理</option>
+        <option>檔案總管</option>
+        <option>玩家管理</option>
+        <option>備份與還原</option>
+      </select>
+
+      <button class="submit-btn">✔️ 建立子帳號</button>
+    </div>
+  </main>
+
+  <!-- 頁尾 -->
+  <iframe src="/hosting/footer.html" style="width: calc(100% - 240px); height: 50px; border: none; position: fixed; bottom: 0; left: 240px;"></iframe>
+
+</body>
+</html>

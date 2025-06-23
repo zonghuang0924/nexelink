@@ -1,106 +1,166 @@
-<!-- Nexelink 歷史帳單模組 -->
-<style>
-  .billing-box {
-    background: rgba(255, 255, 255, 0.03);
-    padding: 30px;
-    border-radius: 16px;
-    margin-bottom: 40px;
-    color: white;
-    box-shadow: 0 0 12px rgba(0, 255, 255, 0.08);
-  }
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>付款與升級 - Nexelink</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+    }
 
-  .billing-box h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #00ffee;
-    text-shadow: 0 0 10px #00ffee88;
-  }
+    main {
+      margin-left: 260px;
+      padding: 40px 30px 100px 30px;
+    }
 
-  .billing-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      animation: floatIn 1s ease-out;
+    }
 
-  .billing-table th, .billing-table td {
-    padding: 12px 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: left;
-    font-size: 14px;
-  }
+    .plan-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 12px rgba(0,255,255,0.08);
+      animation: floatIn 0.8s ease-out;
+    }
 
-  .billing-table th {
-    background: rgba(255, 255, 255, 0.05);
-    color: #00e0ff;
-  }
+    .plan-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
 
-  .billing-table td.status-paid {
-    color: #00ffcc;
-    font-weight: bold;
-  }
+    .plan-info {
+      font-size: 15px;
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
 
-  .billing-table td.status-failed {
-    color: #ff5e5e;
-    font-weight: bold;
-  }
+    .upgrade-select, select {
+      margin-top: 12px;
+      padding: 10px;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: white;
+      border-radius: 8px;
+      font-size: 15px;
+    }
 
-  .billing-table td.status-pending {
-    color: #ffc107;
-    font-weight: bold;
-  }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
 
-  .billing-note {
-    font-size: 13px;
-    color: #aaa;
-    margin-top: 10px;
-  }
-</style>
- <!-- 載入 Nav -->
-<div id="navbar"></div>
-<script>
-  fetch("/components/navbar.html")
-    .then(res => res.text())
-    .then(data => document.getElementById("navbar").innerHTML = data);
-</script>
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 12px #00d2ff;
+    }
 
-<div class="billing-box">
-  <h2>📄 歷史帳單紀錄</h2>
-  <table class="billing-table">
-    <thead>
-      <tr>
-        <th>訂單編號</th>
-        <th>項目名稱</th>
-        <th>金額</th>
-        <th>付款方式</th>
-        <th>付款日期</th>
-        <th>狀態</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>#NXL-00981</td>
-        <td>Minecraft 專屬伺服器方案（1 個月）</td>
-        <td>$1200</td>
-        <td>信用卡</td>
-        <td>2025/06/14</td>
-        <td class="status-paid">已付款</td>
-      </tr>
-      <tr>
-        <td>#NXL-00872</td>
-        <td>MySQL 資料庫加購</td>
-        <td>$300</td>
-        <td>LINE Pay</td>
-        <td>2025/05/14</td>
-        <td class="status-paid">已付款</td>
-      </tr>
-      <tr>
-        <td>#NXL-00801</td>
-        <td>伺服器續租（30天）</td>
-        <td>$1100</td>
-        <td>信用卡</td>
-        <td>2025/04/14</td>
-        <td class="status-failed">失敗</td>
-      </tr>
-    </tbody>
-  </table>
-  <p class="billing-note">※ 若您有任何付款疑問或需補發收據，請透過「即時客服」聯繫我們。</p>
-</div>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background: rgba(255,255,255,0.03);
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    th {
+      background: rgba(255,255,255,0.05);
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 導覽列 -->
+  <iframe src="/hosting/nav.html" style="position: fixed; top: 0; left: 0; width: 240px; height: 100vh; border: none;"></iframe>
+
+  <main>
+    <h1>💳 方案與付款</h1>
+
+    <div class="plan-card">
+      <div class="plan-title">當前方案：入門伺服器（方案 A）</div>
+      <div class="plan-info">CPU：2 核心<br/>RAM：4GB<br/>SSD：20GB<br/>剩餘天數：23 天</div>
+
+      <div class="upgrade-select">
+        升級方案：
+        <select>
+          <option>方案 B（6GB RAM / 30GB SSD / NT$ 199/月）</option>
+          <option>方案 C（8GB RAM / 50GB SSD / NT$ 299/月）</option>
+          <option>方案 D（16GB RAM / 100GB SSD / NT$ 599/月）</option>
+        </select>
+      </div>
+
+      <div class="upgrade-select" style="margin-top: 15px;">
+        選擇付款方式：
+        <select>
+          <option>信用卡（Visa / Master）</option>
+          <option>超商代碼（7-11 / 全家）</option>
+          <option>SOV 幣（20 SOV = NT$100）</option>
+        </select>
+      </div>
+
+      <button>📥 確認付款 / 升級</button>
+    </div>
+
+    <div class="plan-card">
+      <div class="plan-title">付款紀錄</div>
+      <table>
+        <thead>
+          <tr>
+            <th>日期</th>
+            <th>項目</th>
+            <th>金額</th>
+            <th>付款方式</th>
+            <th>狀態</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2025/06/01</td>
+            <td>方案 A 月費</td>
+            <td>NT$ 99</td>
+            <td>信用卡</td>
+            <td>成功</td>
+          </tr>
+          <tr>
+            <td>2025/05/01</td>
+            <td>方案 A 月費</td>
+            <td>NT$ 99</td>
+            <td>SOV 幣</td>
+            <td>成功</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- 頁尾 -->
+  <iframe src="/hosting/footer.html" style="width: calc(100% - 240px); height: 50px; border: none; position: fixed; bottom: 0; left: 240px;"></iframe>
+
+</body>
+</html>

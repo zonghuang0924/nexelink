@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>帳號設定 - Nexelink</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+    }
+
+    main {
+      margin-left: 260px;
+      padding: 40px 30px 100px 30px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      animation: floatIn 1s ease-out;
+    }
+
+    .settings-card {
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 12px rgba(0,255,255,0.08);
+      animation: floatIn 0.8s ease-out;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 14px;
+    }
+
+    button {
+      margin-top: 20px;
+      background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+      border: none;
+      padding: 10px 20px;
+      font-size: 15px;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 12px #00d2ff;
+    }
+
+    ul.device-list {
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+
+    ul.device-list li {
+      margin-bottom: 6px;
+      font-size: 14px;
+      color: #aaffff;
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 導覽列 -->
+  <iframe src="/hosting/nav.html" style="position: fixed; top: 0; left: 0; width: 240px; height: 100vh; border: none;"></iframe>
+
+  <main>
+    <h1>⚙️ 帳號設定</h1>
+
+    <div class="settings-card">
+      <h2 style="margin-top: 0;">👤 個人資訊</h2>
+      <label>用戶名稱</label>
+      <input type="text" value="nexelink_user" />
+
+      <label>Email 信箱</label>
+      <input type="email" value="user@example.com" />
+
+      <button>✔️ 儲存變更</button>
+    </div>
+
+    <div class="settings-card">
+      <h2 style="margin-top: 0;">🔐 修改密碼</h2>
+      <label>目前密碼</label>
+      <input type="password" placeholder="********" />
+
+      <label>新密碼</label>
+      <input type="password" placeholder="********" />
+
+      <label>確認新密碼</label>
+      <input type="password" placeholder="********" />
+
+      <button>🔄 更新密碼</button>
+    </div>
+
+    <div class="settings-card">
+      <h2 style="margin-top: 0;">🛡️ 安全性與登入</h2>
+      <label>是否啟用雙重驗證（2FA）</label>
+      <select>
+        <option>已啟用</option>
+        <option>未啟用</option>
+      </select>
+
+      <label style="margin-top: 16px;">近期登入裝置</label>
+      <ul class="device-list">
+        <li>2025/06/23 - Chrome (Windows) · IP: 192.168.0.5</li>
+        <li>2025/06/22 - Safari (iPhone) · IP: 10.0.0.3</li>
+        <li>2025/06/19 - Edge (MacOS) · IP: 172.20.10.2</li>
+      </ul>
+    </div>
+  </main>
+
+  <!-- 頁尾 -->
+  <iframe src="/hosting/footer.html" style="width: calc(100% - 240px); height: 50px; border: none; position: fixed; bottom: 0; left: 240px;"></iframe>
+
+</body>
+</html>

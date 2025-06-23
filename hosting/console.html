@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>主控台 - Nexelink</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+    }
+
+    main {
+      margin-left: 260px;
+      padding: 40px 30px 100px 30px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      animation: floatIn 1s ease-out;
+    }
+
+    .console-box {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 20px;
+      height: 400px;
+      overflow-y: auto;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      white-space: pre-wrap;
+      box-shadow: 0 0 12px rgba(0,255,255,0.08);
+      animation: floatIn 1s ease-out;
+    }
+
+    .console-line {
+      color: #00ffcc;
+      padding: 2px 0;
+      animation: typeIn 0.3s ease-out;
+    }
+
+    @keyframes typeIn {
+      from { opacity: 0; transform: translateX(-10px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .command-input {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .command-input input {
+      flex: 1;
+      padding: 10px;
+      font-size: 15px;
+      border-radius: 8px;
+      border: none;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+    }
+
+    .command-input input:focus {
+      outline: 2px solid #00d2ff;
+    }
+
+    .command-input button {
+      background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .command-input button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 12px #00d2ff;
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+
+  <script>
+    function sendCommand() {
+      const input = document.getElementById('cmd');
+      const logBox = document.getElementById('console-log');
+      const newLine = document.createElement('div');
+      newLine.className = 'console-line';
+      newLine.textContent = '> ' + input.value;
+      logBox.appendChild(newLine);
+      input.value = '';
+      logBox.scrollTop = logBox.scrollHeight;
+    }
+  </script>
+</head>
+<body>
+
+  <!-- 導覽列 -->
+  <iframe src="/hosting/nav.html" style="position: fixed; top: 0; left: 0; width: 240px; height: 100vh; border: none;"></iframe>
+
+  <main>
+    <h1>🖥️ 主控台 Console</h1>
+
+    <div class="console-box" id="console-log">
+      <div class="console-line">[13:05:24] Server started on port 25565</div>
+      <div class="console-line">[13:05:25] Player Steve joined the game</div>
+      <div class="console-line">[13:05:26] Running command: /tp Steve 100 64 100</div>
+    </div>
+
+    <div class="command-input">
+      <input type="text" id="cmd" placeholder="輸入指令，例如 /say Hello!" />
+      <button onclick="sendCommand()">▶ 發送</button>
+    </div>
+  </main>
+
+  <!-- 頁尾 -->
+  <iframe src="/hosting/footer.html" style="width: calc(100% - 240px); height: 50px; border: none; position: fixed; bottom: 0; left: 240px;"></iframe>
+
+</body>
+</html>

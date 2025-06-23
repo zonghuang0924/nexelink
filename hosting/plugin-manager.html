@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>插件管理 - Nexelink</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+    }
+
+    main {
+      margin-left: 260px;
+      padding: 40px 30px 100px 30px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      animation: floatIn 1s ease-out;
+    }
+
+    .plugin-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .plugin-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 12px rgba(0,255,255,0.08);
+      transition: transform 0.2s ease;
+      animation: floatIn 0.8s ease-out;
+    }
+
+    .plugin-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 12px rgba(0,255,255,0.3);
+    }
+
+    .plugin-title {
+      font-size: 17px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .plugin-status {
+      font-size: 14px;
+      margin-bottom: 10px;
+      color: #aaffff;
+    }
+
+    .plugin-actions button {
+      margin-right: 10px;
+      padding: 6px 12px;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      background: #00d2ff;
+      color: white;
+      transition: transform 0.2s ease;
+    }
+
+    .plugin-actions button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 6px #00d2ff;
+    }
+
+    .upload-panel {
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 12px;
+      animation: floatIn 1s ease-out;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input[type="file"] {
+      background: rgba(255,255,255,0.1);
+      padding: 10px;
+      width: 100%;
+      border-radius: 8px;
+      color: white;
+      border: none;
+      font-size: 15px;
+    }
+
+    input:focus {
+      outline: 2px solid #00d2ff;
+    }
+
+    .install-btn {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .install-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 12px #00d2ff;
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- 導覽列 -->
+  <iframe src="/hosting/nav.html" style="position: fixed; top: 0; left: 0; width: 240px; height: 100vh; border: none;"></iframe>
+
+  <main>
+    <h1>🔌 插件管理</h1>
+
+    <div class="plugin-grid">
+      <div class="plugin-card">
+        <div class="plugin-title">EssentialsX</div>
+        <div class="plugin-status">已啟用 · v2.19.4</div>
+        <div class="plugin-actions">
+          <button>停用</button>
+          <button style="background: crimson;">移除</button>
+        </div>
+      </div>
+
+      <div class="plugin-card">
+        <div class="plugin-title">LuckPerms</div>
+        <div class="plugin-status">已啟用 · v5.4.112</div>
+        <div class="plugin-actions">
+          <button>停用</button>
+          <button style="background: crimson;">移除</button>
+        </div>
+      </div>
+
+      <div class="plugin-card">
+        <div class="plugin-title">GeyserMC</div>
+        <div class="plugin-status">已停用 · v2.1.0</div>
+        <div class="plugin-actions">
+          <button>啟用</button>
+          <button style="background: crimson;">移除</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="upload-panel">
+      <label>上傳自訂插件（.jar 檔）</label>
+      <input type="file" />
+      <button class="install-btn">📥 上傳安裝</button>
+
+      <hr style="margin: 25px 0; border-color: rgba(255,255,255,0.1);">
+
+      <label>推薦插件一鍵安裝</label>
+      <button class="install-btn">EssentialsX</button>
+      <button class="install-btn">LuckPerms</button>
+      <button class="install-btn">Dynmap</button>
+      <button class="install-btn">Vault</button>
+    </div>
+  </main>
+
+  <!-- 頁尾 -->
+  <iframe src="/hosting/footer.html" style="width: calc(100% - 240px); height: 50px; border: none; position: fixed; bottom: 0; left: 240px;"></iframe>
+
+</body>
+</html>

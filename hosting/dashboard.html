@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nexelink 託管平台｜主控台</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+    }
+    main {
+      margin-left: 260px;
+      padding: 40px 30px 80px 30px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      animation: floatIn 1s ease-out;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 12px rgba(0,255,255,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: floatIn 0.8s ease forwards;
+      opacity: 0;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 18px rgba(0,255,255,0.3);
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 12px;
+      animation: fadeInText 1s ease;
+    }
+
+    .card-content {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInText {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 左側導覽列 -->
+  <iframe src="/hosting/nav.html" style="position: fixed; top: 0; left: 0; width: 240px; height: 100vh; border: none;"></iframe>
+
+  <main>
+    <h1>👋 歡迎回來，這是你的主控台</h1>
+
+    <div class="card-grid">
+      <div class="card" style="animation-delay: 0s;">
+        <div class="card-title">伺服器狀態</div>
+        <div class="card-content">🔵 正在運行<br/>IP：ely.nexelink.net<br/>版本：1.21.5</div>
+      </div>
+
+      <div class="card" style="animation-delay: 0.1s;">
+        <div class="card-title">CPU 使用率</div>
+        <div class="card-content">42% 使用中<br/>峰值：78%</div>
+      </div>
+
+      <div class="card" style="animation-delay: 0.2s;">
+        <div class="card-title">RAM 使用量</div>
+        <div class="card-content">2.1GB / 4GB<br/>可升級方案</div>
+      </div>
+
+      <div class="card" style="animation-delay: 0.3s;">
+        <div class="card-title">線上玩家</div>
+        <div class="card-content">7 名玩家在線<br/>名單：/</div>
+      </div>
+
+      <div class="card" style="animation-delay: 0.4s;">
+        <div class="card-title">磁碟空間</div>
+        <div class="card-content">15GB / 20GB 已用<br/>每日自動備份開啟</div>
+      </div>
+
+      <div class="card" style="animation-delay: 0.5s;">
+        <div class="card-title">月流量</div>
+        <div class="card-content">本月已用：32.5 GB<br/>上限：100 GB</div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 頁尾 -->
+  <iframe src="/hosting/footer.html" style="width: calc(100% - 240px); height: 50px; border: none; position: fixed; bottom: 0; left: 240px;"></iframe>
+
+</body>
+</html>

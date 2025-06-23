@@ -1,0 +1,56 @@
+<!-- nav.html -->
+<aside id="sidebar" style="position: fixed; top: 0; left: 0; width: 240px; height: 100vh; background: linear-gradient(180deg, #0f2027, #203a43, #2c5364); color: white; font-family: 'Segoe UI', sans-serif; box-shadow: 2px 0 10px rgba(0,0,0,0.5); z-index: 1000; transition: transform 0.3s ease;">
+  <div style="padding: 20px; font-size: 22px; font-weight: bold; letter-spacing: 1px; text-align: center; animation: fadeIn 1s ease-out;">🚀 Nexelink </div>
+  <nav style="display: flex; flex-direction: column; padding: 10px;">
+    <a href="/hosting/dashboard.html" class="nav-link">📊 主控台 Dashboard</a>
+    <a href="/hosting/server-settings.html" class="nav-link">⚙️ 主機設定</a>
+    <a href="/hosting/file-manager.html" class="nav-link">🗂️ 檔案管理</a>
+    <a href="/hosting/plugin-manager.html" class="nav-link">🔌 插件管理</a>
+    <a href="/hosting/console.html" class="nav-link">🖥️ 主控台 Console</a>
+    <a href="/hosting/players.html" class="nav-link">👥 玩家管理</a>
+    <a href="/hosting/backup.html" class="nav-link">💾 備份與還原</a>
+    <a href="/hosting/billing.html" class="nav-link">💳 方案與付款</a>
+    <a href="/hosting/sub-users.html" class="nav-link">👤 子帳號管理</a>
+    <a href="/hosting/notifications.html" class="nav-link">🔔 通知中心</a>
+    <a href="/hosting/support.html" class="nav-link">🛠️ 客服支援</a>
+    <a href="/hosting/stats.html" class="nav-link">📈 使用統計</a>
+    <a href="/hosting/dynmap.html" class="nav-link">🗺️ 即時地圖</a>
+    <a href="/hosting/subdomain.html" class="nav-link">🌐 子網域設定</a>
+    <a href="/hosting/apikey.html" class="nav-link">🔑 API 金鑰</a>
+    <a href="/hosting/account-settings.html" class="nav-link">⚙️ 帳號設定</a>
+  </nav>
+</aside>
+
+<style>
+  .nav-link {
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    transition: background 0.2s, transform 0.2s, opacity 0.3s;
+    animation: floatIn 0.8s ease-out;
+  }
+  .nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(4px);
+    box-shadow: 0 0 8px #00d2ff;
+  }
+
+  @keyframes floatIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+</style>

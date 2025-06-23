@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>客服中心 - Nexelink</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+    }
+
+    main {
+      margin-left: 260px;
+      padding: 40px 30px 100px 30px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      animation: floatIn 1s ease-out;
+    }
+
+    .form-section, .ticket-list {
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 12px rgba(0,255,255,0.08);
+      animation: floatIn 1s ease-out;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 14px;
+    }
+
+    button {
+      margin-top: 20px;
+      background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+      border: none;
+      padding: 10px 20px;
+      font-size: 15px;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 12px #00d2ff;
+    }
+
+    .ticket-item {
+      background: rgba(255,255,255,0.04);
+      padding: 16px;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      box-shadow: 0 0 8px rgba(0,255,255,0.05);
+      transition: transform 0.2s;
+    }
+
+    .ticket-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 12px rgba(0,255,255,0.2);
+    }
+
+    .ticket-title {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .ticket-meta {
+      font-size: 13px;
+      color: #aaffff;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .status-open { color: #00d2ff; font-weight: bold; }
+    .status-replied { color: #4cd137; font-weight: bold; }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 導覽列 -->
+  <iframe src="/hosting/nav.html" style="position: fixed; top: 0; left: 0; width: 240px; height: 100vh; border: none;"></iframe>
+
+  <main>
+    <h1>🛠️ 客服中心</h1>
+
+    <div class="form-section">
+      <h2 style="margin-top: 0;">📨 建立新工單</h2>
+      <form>
+        <label>問題分類</label>
+        <select>
+          <option>技術問題</option>
+          <option>付款與帳務</option>
+          <option>功能建議</option>
+          <option>其他</option>
+        </select>
+
+        <label>主題</label>
+        <input type="text" placeholder="例如：插件相容性錯誤"/>
+
+        <label>說明內容</label>
+        <textarea rows="5" placeholder="請詳細描述您遇到的問題或建議內容..."></textarea>
+
+        <button type="submit">✔️ 提交工單</button>
+      </form>
+    </div>
+
+    <div class="ticket-list">
+      <h2 style="margin-top: 0;">📋 我的工單紀錄</h2>
+
+      <div class="ticket-item">
+        <div class="ticket-title">插件相容性錯誤</div>
+        <div class="ticket-meta">
+          <span class="status-replied">已回覆</span>
+          <span>建立於：2025/06/21</span>
+        </div>
+      </div>
+
+      <div class="ticket-item">
+        <div class="ticket-title">SOV 幣付款未入帳</div>
+        <div class="ticket-meta">
+          <span class="status-open">待處理</span>
+          <span>建立於：2025/06/22</span>
+        </div>
+      </div>
+
+      <div class="ticket-item">
+        <div class="ticket-title">建議新增資料夾備份功能</div>
+        <div class="ticket-meta">
+          <span class="status-replied">已回覆</span>
+          <span>建立於：2025/06/18</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- 頁尾 -->
+  <iframe src="/hosting/footer.html" style="width: calc(100% - 240px); height: 50px; border: none; position: fixed; bottom: 0; left: 240px;"></iframe>
+
+</body>
+</html>

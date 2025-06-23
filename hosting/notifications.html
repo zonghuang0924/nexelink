@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>通知中心 - Nexelink</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+    }
+
+    main {
+      margin-left: 260px;
+      padding: 40px 30px 100px 30px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      animation: floatIn 1s ease-out;
+    }
+
+    .notification-card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 0 10px rgba(0,255,255,0.06);
+      transition: transform 0.2s ease;
+      animation: floatIn 0.6s ease-out;
+    }
+
+    .notification-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 16px rgba(0,255,255,0.2);
+    }
+
+    .notif-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .notif-body {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #aaffff;
+    }
+
+    .notif-time {
+      font-size: 12px;
+      margin-top: 8px;
+      color: #bbb;
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 導覽列 -->
+  <iframe src="/hosting/nav.html" style="position: fixed; top: 0; left: 0; width: 240px; height: 100vh; border: none;"></iframe>
+
+  <main>
+    <h1>🔔 通知中心</h1>
+
+    <div class="notification-card">
+      <div class="notif-title">⚠️ CPU 使用率高達 95%</div>
+      <div class="notif-body">您的主機在 2025/06/23 21:48 CPU 使用率過高，請檢查是否有無限循環或大量實體生成。</div>
+      <div class="notif-time">2025/06/23 21:48</div>
+    </div>
+
+    <div class="notification-card">
+      <div class="notif-title">📦 備份完成通知</div>
+      <div class="notif-body">2025/06/22 自動備份已完成，共 524MB，儲存於備份區域。您可於備份頁進行還原或下載。</div>
+      <div class="notif-time">2025/06/22 03:20</div>
+    </div>
+
+    <div class="notification-card">
+      <div class="notif-title">💬 客服回覆通知</div>
+      <div class="notif-body">您的工單【插件相容性問題】已有客服回覆，請前往客服中心查看最新進度與回應。</div>
+      <div class="notif-time">2025/06/21 15:12</div>
+    </div>
+
+    <div class="notification-card">
+      <div class="notif-title">📅 主機即將到期</div>
+      <div class="notif-body">您的入門主機方案將於 2025/07/01 到期，請於期限前完成續費以避免主機停機。</div>
+      <div class="notif-time">2025/06/20 08:45</div>
+    </div>
+
+  </main>
+
+  <!-- 頁尾 -->
+  <iframe src="/hosting/footer.html" style="width: calc(100% - 240px); height: 50px; border: none; position: fixed; bottom: 0; left: 240px;"></iframe>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>使用統計 - Nexelink</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+    }
+
+    main {
+      margin-left: 260px;
+      padding: 40px 30px 100px 30px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      animation: floatIn 1s ease-out;
+    }
+
+    .chart-card {
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      box-shadow: 0 0 12px rgba(0,255,255,0.08);
+      animation: floatIn 1s ease-out;
+    }
+
+    canvas {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 導覽列 -->
+  <iframe src="/hosting/nav.html" style="position: fixed; top: 0; left: 0; width: 240px; height: 100vh; border: none;"></iframe>
+
+  <main>
+    <h1>📈 使用統計</h1>
+
+    <div class="chart-card">
+      <h2>CPU 使用率（過去 7 日）</h2>
+      <canvas id="cpuChart"></canvas>
+    </div>
+
+    <div class="chart-card">
+      <h2>RAM 使用量（GB）</h2>
+      <canvas id="ramChart"></canvas>
+    </div>
+
+    <div class="chart-card">
+      <h2>每日平均玩家數</h2>
+      <canvas id="playerChart"></canvas>
+    </div>
+  </main>
+
+  <!-- 頁尾 -->
+  <iframe src="/hosting/footer.html" style="width: calc(100% - 240px); height: 50px; border: none; position: fixed; bottom: 0; left: 240px;"></iframe>
+
+  <!-- Chart.js Init -->
+  <script>
+    const labels = ['週一', '週二', '週三', '週四', '週五', '週六', '週日'];
+
+    new Chart(document.getElementById('cpuChart'), {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [{
+          label: 'CPU (%)',
+          data: [32, 45, 61, 50, 48, 78, 52],
+          fill: true,
+          borderColor: '#00d2ff',
+          backgroundColor: 'rgba(0,210,255,0.2)',
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { labels: { color: 'white' } } },
+        scales: {
+          x: { ticks: { color: 'white' } },
+          y: { ticks: { color: 'white' } }
+        }
+      }
+    });
+
+    new Chart(document.getElementById('ramChart'), {
+      type: 'bar',
+      data: {
+        labels,
+        datasets: [{
+          label: 'RAM 已用 (GB)',
+          data: [1.8, 2.2, 2.0, 2.5, 2.3, 3.0, 2.7],
+          backgroundColor: '#3a7bd5'
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { labels: { color: 'white' } } },
+        scales: {
+          x: { ticks: { color: 'white' } },
+          y: { ticks: { color: 'white' } }
+        }
+      }
+    });
+
+    new Chart(document.getElementById('playerChart'), {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [{
+          label: '平均線上玩家',
+          data: [3, 5, 4, 6, 8, 12, 7],
+          borderColor: '#4cd137',
+          backgroundColor: 'rgba(76,209,55,0.2)',
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { labels: { color: 'white' } } },
+        scales: {
+          x: { ticks: { color: 'white' } },
+          y: { ticks: { color: 'white' } }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

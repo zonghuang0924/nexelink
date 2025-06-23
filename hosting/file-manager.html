@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>檔案管理 - Nexelink</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+    }
+
+    main {
+      margin-left: 260px;
+      padding: 40px 30px 100px 30px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      animation: floatIn 1s ease-out;
+    }
+
+    .file-panel {
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 12px rgba(0,255,255,0.1);
+      animation: floatIn 0.8s ease-out;
+      display: flex;
+      gap: 30px;
+    }
+
+    .folder-tree {
+      flex: 1;
+      max-width: 300px;
+    }
+
+    .folder-tree ul {
+      list-style: none;
+      padding-left: 10px;
+    }
+
+    .folder-tree li {
+      margin: 6px 0;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .folder-tree li:hover {
+      color: #00d2ff;
+      transform: translateX(3px);
+    }
+
+    .file-actions {
+      flex: 2;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+
+    input[type="file"], input[type="text"], textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      font-size: 14px;
+    }
+
+    input:focus, textarea:focus {
+      outline: 2px solid #00d2ff;
+    }
+
+    button {
+      margin-top: 16px;
+      padding: 10px 20px;
+      background: linear-gradient(90deg, #00d2ff, #3a7bd5);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 12px #00d2ff;
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- 導覽列 -->
+  <iframe src="/hosting/nav.html" style="position: fixed; top: 0; left: 0; width: 240px; height: 100vh; border: none;"></iframe>
+
+  <main>
+    <h1>🗂️ 檔案管理</h1>
+
+    <div class="file-panel">
+      <div class="folder-tree">
+        <strong>📁 根目錄</strong>
+        <ul>
+          <li>📁 plugins</li>
+          <li>📁 world</li>
+          <li>📁 logs</li>
+          <li>📄 server.properties</li>
+          <li>📄 ops.json</li>
+          <li>📄 whitelist.json</li>
+        </ul>
+      </div>
+
+      <div class="file-actions">
+        <label>選擇上傳檔案：</label>
+        <input type="file" />
+
+        <label>檔案名稱 / 重新命名：</label>
+        <input type="text" placeholder="例如：myplugin.jar"/>
+
+        <label>檔案內容預覽 / 編輯：</label>
+        <textarea rows="6" placeholder="此處顯示或編輯選定的文字檔案內容..."></textarea>
+
+        <button>📤 上傳</button>
+        <button>✏️ 儲存修改</button>
+        <button style="background: crimson;">🗑️ 刪除檔案</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- 頁尾 -->
+  <iframe src="/hosting/footer.html" style="width: calc(100% - 240px); height: 50px; border: none; position: fixed; bottom: 0; left: 240px;"></iframe>
+
+</body>
+</html>
