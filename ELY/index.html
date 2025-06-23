@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nexelink ELY官網首頁</title>
+</head>
+<body>
+
+  <!-- 導入 NAV -->
+  <div id="nav-placeholder"></div>
+
+  <!-- 首頁主視覺區塊 -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>未來由你主導</h1>
+      <p>我們連結科技與創意，打造無限可能</p>
+      <a href="/ELY/player.html" class="btn-primary">啟動玩家儀表板</a>
+    </div>
+  </header>
+
+  <!-- 簡介區塊 -->
+  <section class="intro">
+    <h2>關於 Nexelink ELY</h2>
+    <p>Nexelink ELY是一個結合數位開發、玩家互動與社群價值的科技品牌。我們致力於創造專屬的數位體驗與社群平台。</p>
+  </section>
+
+  <!-- 導入 FOOTER -->
+  <div id="footer-placeholder"></div>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Noto Sans TC', sans-serif;
+      background: white;
+      color: #222;
+    }
+
+    .hero {
+      height: 100vh;
+      background: linear-gradient(to right, #00c2cb, #007a9b);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+    .hero-content h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .hero-content p {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: white;
+      color: #007a9b;
+      padding: 12px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .btn-primary:hover {
+      background: #f0faff;
+    }
+
+    .intro {
+      max-width: 800px;
+      margin: 80px auto;
+      text-align: center;
+      padding: 0 20px;
+    }
+    .intro h2 {
+      font-size: 2em;
+      margin-bottom: 10px;
+      color: #007a9b;
+    }
+  </style>
+
+  <script>
+    // 載入 nav 與 footer 模組
+    fetch("/ELY/nav.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("nav-placeholder").innerHTML = data);
+
+    fetch("/ELY/footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+  </script>
+</body>
+</html>

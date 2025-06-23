@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>關於我們 - Nexelink</title>
+</head>
+<body>
+
+  <div id="nav-placeholder"></div>
+
+  <main class="about">
+    <h2>我們是 Nexelink</h2>
+    <p>由一群熱愛科技、設計與創意的開發者組成，致力於打造一個兼具美感與功能的數位世界。</p>
+
+    <section class="section">
+      <h3>🔧 我們的使命</h3>
+      <p>將數位創意轉化為實際應用，為玩家與開發者創造更深層的連結。</p>
+    </section>
+
+    <section class="section">
+      <h3>🚀 我們的願景</h3>
+      <p>打造未來社群技術平台，融合 Minecraft、AI、Web3 與創作者經濟的世界。</p>
+    </section>
+
+    <section class="section">
+      <h3>👨‍💻 核心團隊</h3>
+      <p>我們的核心團隊包含系統架構師、UI/UX 設計師、Minecraft 管理員與社群經營者。</p>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Noto Sans TC', sans-serif;
+      background: #f0faff;
+    }
+    .about {
+      max-width: 900px;
+      margin: 120px auto 60px;
+      padding: 0 20px;
+    }
+    .about h2 {
+      font-size: 2.2em;
+      color: #007a9b;
+      text-align: center;
+      margin-bottom: 30px;
+      font-family: 'Orbitron', sans-serif;
+    }
+    .about p {
+      text-align: center;
+      font-size: 1.1em;
+      margin-bottom: 40px;
+      color: #333;
+    }
+    .section {
+      background: white;
+      border-radius: 10px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    .section h3 {
+      margin-bottom: 10px;
+      color: #00aabf;
+    }
+    .fade-up {
+            opacity: 0;transform: translateY(30px);transform: translateY(30px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-up.active {
+    opacity: 1;
+    transform: translateY(0);
+    }
+
+  </style>
+
+  <script>
+    fetch("/ELY/nav.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("nav-placeholder").innerHTML = data);
+
+    fetch("/ELY/footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+  </script>
+</body>
+</html>

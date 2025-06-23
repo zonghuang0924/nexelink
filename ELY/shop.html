@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>購買 Ely 幣</title>
+</head>
+<body>
+
+  <div id="nav-placeholder"></div>
+
+  <main class="elyshop">
+    <h2>購買 Ely 幣</h2>
+    <p>支持 Ely 伺服器發展，並獲得虛擬 Ely 幣進行遊戲內消費！</p>
+
+    <div class="card-grid">
+      <div class="ely-card">
+        <h3>💸 100 Ely 幣</h3>
+        <p>NT$100</p>
+        <a href="https://pay.example.com/ely100" target="_blank">立即購買</a>
+      </div>
+      <div class="ely-card">
+        <h3>💸 200 Ely 幣</h3>
+        <p>NT$200</p>
+        <a href="https://pay.example.com/ely200" target="_blank">立即購買</a>
+      </div>
+      <div class="ely-card">
+        <h3>💸 500 Ely 幣</h3>
+        <p>NT$500</p>
+        <a href="https://pay.example.com/ely500" target="_blank">立即購買</a>
+      </div>
+      <div class="ely-card">
+        <h3>💸 1000 Ely 幣</h3>
+        <p>NT$1000</p>
+        <a href="https://pay.example.com/ely1000" target="_blank">立即購買</a>
+      </div>
+    </div>
+
+    <p class="note">付款成功後將自動發送至您的 Ely 帳號。若有問題請至 Discord 聯絡管理員。</p>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Noto Sans TC', sans-serif;
+      background: #f0faff;
+    }
+
+    .elyshop {
+      max-width: 1000px;
+      margin: 120px auto 60px;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .elyshop h2 {
+      font-size: 2em;
+      color: #007a9b;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .ely-card {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .ely-card h3 {
+      color: #00aabf;
+      margin-bottom: 10px;
+    }
+
+    .ely-card p {
+      font-size: 1.1em;
+      margin-bottom: 15px;
+    }
+
+    .ely-card a {
+      background: #00c2cb;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .ely-card a:hover {
+      background: #007a9b;
+    }
+
+    .note {
+      font-size: 0.9em;
+      color: #777;
+      margin-top: 30px;
+    }
+  </style>
+
+  <script>
+    fetch("/ELY/nav.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("nav-placeholder").innerHTML = data);
+
+    fetch("/ELY/footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+  </script>
+</body>
+</html>

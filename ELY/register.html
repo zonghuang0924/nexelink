@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>註冊 - Nexelink 玩家中心</title>
+</head>
+<body>
+
+  <!-- 導入 NAV -->
+  <div id="nav-placeholder"></div>
+
+  <main class="register-container">
+    <h2>玩家註冊</h2>
+    <form class="register-form">
+      <label for="email">Email</label>
+      <input type="email" id="email" required>
+
+      <label for="username">玩家 ID</label>
+      <input type="text" id="username" required>
+
+      <label for="password">密碼</label>
+      <input type="password" id="password" required>
+
+      <button type="submit">建立帳號</button>
+
+      <p class="tip">已經有帳號了？<a href="/ELY/login.html">點此登入</a></p>
+    </form>
+  </main>
+
+  <!-- 導入 FOOTER -->
+  <div id="footer-placeholder"></div>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Noto Sans TC', sans-serif;
+      background: #f0faff;
+    }
+
+    .register-container {
+      max-width: 400px;
+      margin: 120px auto;
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    .register-container h2 {
+      color: #007a9b;
+      margin-bottom: 25px;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .register-form label {
+      display: block;
+      margin: 10px 0 5px;
+      text-align: left;
+      color: #333;
+    }
+
+    .register-form input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 15px;
+    }
+
+    .register-form button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      background: #00c2cb;
+      color: white;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .register-form button:hover {
+      background: #007a9b;
+    }
+
+    .tip {
+      margin-top: 10px;
+      font-size: 0.9em;
+      color: #666;
+    }
+
+    .tip a {
+      color: #007a9b;
+      text-decoration: none;
+    }
+  </style>
+
+  <script>
+    fetch("/ELY/nav.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("nav-placeholder").innerHTML = data);
+
+    fetch("/ELY/footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+  </script>
+</body>
+</html>

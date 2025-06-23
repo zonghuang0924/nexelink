@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>人才招募 - Nexelink</title>
+</head>
+<body>
+
+  <div id="nav-placeholder"></div>
+
+  <main class="recruit">
+    <h2>加入 Nexelink 團隊</h2>
+    <p>我們正在尋找有熱情、有創意的夥伴一起打造數位未來。</p>
+
+    <section class="job-listing">
+      <h3>📌 招募職缺</h3>
+      <ul>
+        <li><strong>前端工程師</strong> — 熟悉 HTML/CSS/JavaScript</li>
+        <li><strong>Discord Bot 工程師</strong> — 熟 Python / Discord.js</li>
+        <li><strong>Minecraft 伺服器管理員</strong> — 熟插件管理 / 權限設定</li>
+        <li><strong>數位設計師</strong> — 擅長 UI 設計 / 動畫</li>
+      </ul>
+    </section>
+
+    <section class="join-btn">
+      <a href="/ELY/join.html" class="apply-btn">填寫加入表單</a>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Noto Sans TC', sans-serif;
+      background: #f0faff;
+    }
+
+    .recruit {
+      max-width: 900px;
+      margin: 120px auto 60px;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .recruit h2 {
+      font-size: 2.2em;
+      color: #007a9b;
+      margin-bottom: 20px;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .job-listing {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      text-align: left;
+    }
+
+    .job-listing h3 {
+      color: #00aabf;
+      margin-bottom: 10px;
+    }
+
+    .job-listing ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .job-listing li {
+      margin: 10px 0;
+      padding-left: 10px;
+    }
+
+    .apply-btn {
+      margin-top: 30px;
+      display: inline-block;
+      background: #00c2cb;
+      color: white;
+      padding: 12px 30px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .apply-btn:hover {
+      background: #007a9b;
+    }
+  </style>
+
+  <script>
+    fetch("/ELY/nav.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("nav-placeholder").innerHTML = data);
+
+    fetch("/ELY/footer.html")
+      .then(res => res.text())
+      .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+  </script>
+</body>
+</html>
