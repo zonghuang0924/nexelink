@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ELY 王國介紹</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Rajdhani&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Rajdhani', sans-serif;
+      background: linear-gradient(to bottom, #0a0a0a, #1c1c1c);
+      color: #fff;
+    }
+    h1 {
+      text-align: center;
+      font-family: 'Orbitron', sans-serif;
+      color: #ff6a00;
+      margin: 2rem 0;
+    }
+    .kingdoms {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .kingdom-card {
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+      border: 2px solid transparent;
+      transition: all 0.3s ease-in-out;
+      position: relative;
+      overflow: hidden;
+    }
+    .kingdom-card:hover {
+      transform: scale(1.03);
+      border-color: #ff6a00;
+      box-shadow: 0 0 20px rgba(255, 106, 0, 0.5);
+    }
+    .kingdom-card img {
+      max-width: 100px;
+      margin-bottom: 1rem;
+    }
+    .kingdom-card h3 {
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+      color: #ffaa33;
+    }
+    .kingdom-card p {
+      font-size: 1rem;
+      color: #ccc;
+      margin-bottom: 1rem;
+    }
+    .kingdom-card button {
+      background: #ff6a00;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      border-radius: 4px;
+      color: #fff;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .kingdom-card button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #ff6a00;
+    }
+    @media (max-width: 600px) {
+      .kingdom-card { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div id="nav-include"></div>
+
+  <h1>
+    <span data-lang="zh">ELY 王國介紹</span>
+    <span data-lang="en">ELY Kingdoms</span>
+    <span data-lang="ja">ELY 王国の紹介</span>
+  </h1>
+
+  <div class="kingdoms">
+    <div class="kingdom-card flame">
+      <img src="flag_hestia.png" alt="赫斯提亞王國">
+      <h3>赫斯提亞王國<br/><small>Hestia Kingdom</small></h3>
+      <p>追求榮耀與信仰的烈焰之國，擁有最強戰士與神殿。</p>
+      <a href="join.html?kingdom=hestia"><button>申請加入</button></a>
+    </div>
+
+    <div class="kingdom-card frost">
+      <img src="flag_fed.png" alt="燃拜賽雅聯邦">
+      <h3>燃拜賽雅聯邦<br/><small>Renbaisaia Federation</small></h3>
+      <p>科技與知識並存的智慧國度，致力中立與和平。</p>
+      <a href="join.html?kingdom=fed"><button>申請加入</button></a>
+    </div>
+
+    <div class="kingdom-card void">
+      <img src="flag_indi.png" alt="陰蒂帝國">
+      <h3>陰蒂帝國<br/><small>Yindi Empire</small></h3>
+      <p>古老而神秘的魔法帝國，擅長操控影與黑暗力量。</p>
+      <a href="join.html?kingdom=indi"><button>申請加入</button></a>
+    </div>
+  </div>
+
+  <div id="footer-include"></div>
+
+  <script>
+    // 導入 nav/footer
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("nav.html").then(res => res.text()).then(data => {
+        document.getElementById("nav-include").innerHTML = data;
+      });
+      fetch("footer.html").then(res => res.text()).then(data => {
+        document.getElementById("footer-include").innerHTML = data;
+      });
+    });
+  </script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>伺服器規則 | ELY Kingdom</title>
+  <title>ELY 法規系統</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Rajdhani&display=swap" rel="stylesheet">
   <style>
     body {
@@ -13,26 +13,56 @@
       color: #fff;
     }
     .section {
-      padding: 4rem 2rem;
-      max-width: 960px;
+      padding: 3rem 1.5rem;
+      max-width: 1024px;
       margin: auto;
-      line-height: 1.8;
     }
     h1 {
       text-align: center;
-      color: #ff6a00;
       font-family: 'Orbitron', sans-serif;
+      color: #ff6a00;
       margin-bottom: 2rem;
     }
-    h2 {
-      color: #ff6a00;
-      margin-top: 2.5rem;
-    }
-    ul {
-      padding-left: 1.5rem;
-    }
-    li {
+    #search {
+      width: 100%;
+      padding: 0.7rem;
       margin-bottom: 1rem;
+      font-size: 1rem;
+      border: 1px solid #555;
+      background-color: #121212;
+      color: #fff;
+    }
+    .filter-buttons {
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .filter-buttons button {
+      margin: 0.2rem;
+      padding: 0.5rem 1rem;
+      background: #333;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s;
+      border-radius: 4px;
+    }
+    .filter-buttons button:hover {
+      background: #ff6a00;
+    }
+    .law-item {
+      background: #1a1a1a;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border-left: 4px solid #ff6a00;
+      border-radius: 4px;
+    }
+    .law-item h3 {
+      margin: 0 0 0.5rem 0;
+      color: #ffaa33;
+    }
+    .law-item p {
+      margin: 0;
+      font-size: 1rem;
     }
     @media (max-width: 768px) {
       .section { padding: 2rem 1rem; }
@@ -41,89 +71,117 @@
 </head>
 <body>
 
-  <!-- nav -->
   <div id="nav-include"></div>
 
   <section class="section">
     <h1>
-      <span data-lang="zh">伺服器規則</span>
-      <span data-lang="en">Server Laws</span>
-      <span data-lang="ja">サーバー規則</span>
+      <span data-lang="zh">ELY 法規系統</span>
+      <span data-lang="en">ELY Legal System</span>
+      <span data-lang="ja">ELY 法律システム</span>
     </h1>
 
-    <h2>
-      <span data-lang="zh">📜 基本守則</span>
-      <span data-lang="en">📜 General Rules</span>
-      <span data-lang="ja">📜 基本ルール</span>
-    </h2>
-    <ul>
-      <li data-lang="zh">§001 禁止使用外掛、輔助程式或任何形式的作弊工具。</li>
-      <li data-lang="en">§001 No hacking, third-party tools, or any form of cheating.</li>
-      <li data-lang="ja">§001 チート、ハック、外部ツールの使用は禁止です。</li>
+    <input type="text" id="search" placeholder="🔍 搜尋條號、法名或關鍵字">
 
-      <li data-lang="zh">§002 尊重其他玩家，禁止辱罵、威脅、騷擾。</li>
-      <li data-lang="en">§002 Respect others. No insults, threats, or harassment.</li>
-      <li data-lang="ja">§002 他プレイヤーを尊重し、罵倒・脅迫・嫌がらせは禁止。</li>
+    <div class="filter-buttons">
+      <button onclick="filterLaw('all')">全部 / All</button>
+      <button onclick="filterLaw('憲法')">憲法 / Constitution</button>
+      <button onclick="filterLaw('刑法')">刑法 / Criminal Law</button>
+      <button onclick="filterLaw('民法')">民法 / Civil Law</button>
+    </div>
 
-      <li data-lang="zh">§003 嚴禁破壞他人建築與公共設施。</li>
-      <li data-lang="en">§003 Do not destroy other players’ builds or public structures.</li>
-      <li data-lang="ja">§003 他人の建築物や公共施設の破壊は禁止。</li>
-
-      <li data-lang="zh">§004 請勿利用漏洞或 Bug 牟利，發現問題請立即回報。</li>
-      <li data-lang="en">§004 Do not exploit bugs. Report any issues immediately.</li>
-      <li data-lang="ja">§004 バグの悪用は禁止。発見した場合は速やかに報告してください。</li>
-    </ul>
-
-    <h2>
-      <span data-lang="zh">⚔️ 戰爭與政治</span>
-      <span data-lang="en">⚔️ War & Politics</span>
-      <span data-lang="ja">⚔️ 戦争と政治</span>
-    </h2>
-    <ul>
-      <li data-lang="zh">§101 建國後可參與戰爭，必須經官方審核通過。</li>
-      <li data-lang="en">§101 Nations may engage in war with staff approval.</li>
-      <li data-lang="ja">§101 国家はスタッフ承認後に戦争に参加できます。</li>
-
-      <li data-lang="zh">§102 宣戰須提前 24 小時公告，且由雙方代表確認。</li>
-      <li data-lang="en">§102 War must be declared 24 hours in advance and confirmed by both sides.</li>
-      <li data-lang="ja">§102 宣戦布告は24時間前に発表し、両者の代表が同意する必要があります。</li>
-    </ul>
-
-    <h2>
-      <span data-lang="zh">⚖️ 處罰規則</span>
-      <span data-lang="en">⚖️ Punishment System</span>
-      <span data-lang="ja">⚖️ 処罰ルール</span>
-    </h2>
-    <ul>
-      <li data-lang="zh">§201 違規行為將根據嚴重程度給予禁言、監禁、封鎖處分。</li>
-      <li data-lang="en">§201 Violations may result in mute, jail, or ban depending on severity.</li>
-      <li data-lang="ja">§201 違反行為にはミュート、監禁、BANなどの処罰が科されます。</li>
-
-      <li data-lang="zh">§202 上訴可由法院系統審理，需填寫完整表單。</li>
-      <li data-lang="en">§202 Appeals can be filed via the court system with a complete form.</li>
-      <li data-lang="ja">§202 異議申し立ては裁判システムを通じて提出できます。</li>
-    </ul>
+    <div id="law-list"></div>
   </section>
 
-  <!-- footer -->
   <div id="footer-include"></div>
 
   <script>
-    function setLang(lang) {
-      localStorage.setItem('lang', lang);
-      document.querySelectorAll('[data-lang]').forEach(el => {
-        el.style.display = (el.dataset.lang === lang) ? 'inline' : 'none';
+    const lang = localStorage.getItem('lang') || 'zh';
+    const laws = [
+      {
+        code: "§001",
+        law: "憲法",
+        title: {
+          zh: "伺服器基本權利保障",
+          en: "Basic Server Rights",
+          ja: "基本的なサーバー権利保障"
+        },
+        content: {
+          zh: "所有玩家享有基本遊戲權利，包括發言、交易、移動與遊玩自由。",
+          en: "All players are entitled to basic gameplay rights including speech, trade, movement, and freedom of play.",
+          ja: "すべてのプレイヤーは、発言、取引、移動、自由なプレイなどの基本的な権利を有します。"
+        }
+      },
+      {
+        code: "§002",
+        law: "刑法",
+        title: {
+          zh: "禁止使用外掛程式",
+          en: "No External Hacks",
+          ja: "外部ツールの禁止"
+        },
+        content: {
+          zh: "禁止任何形式的外掛、作弊或修改客戶端行為，一經查獲將永久封禁。",
+          en: "Use of hacks, cheats, or any modified clients is strictly prohibited and will result in permanent ban.",
+          ja: "ハック、チート、または改造クライアントの使用は禁止され、永久BANの対象となります。"
+        }
+      },
+      {
+        code: "§003",
+        law: "民法",
+        title: {
+          zh: "財產保護條款",
+          en: "Property Protection Clause",
+          ja: "財産保護条項"
+        },
+        content: {
+          zh: "任何未經同意盜取、破壞他人建築與物品者，將依法懲處。",
+          en: "Unauthorized theft or destruction of others' buildings or items will be punished accordingly.",
+          ja: "他人の建築物やアイテムの無断盗用や破壊は、法により処罰されます。"
+        }
+      }
+    ];
+
+    function renderLaws(filter = 'all', keyword = '') {
+      const list = document.getElementById('law-list');
+      list.innerHTML = '';
+      laws.forEach(law => {
+        if ((filter === 'all' || law.law === filter) &&
+            (law.code.includes(keyword) ||
+             law.law.includes(keyword) ||
+             law.title[lang].includes(keyword) ||
+             law.content[lang].includes(keyword))) {
+          const div = document.createElement('div');
+          div.className = 'law-item';
+          div.innerHTML = `
+            <h3>${law.code}｜${law.law}</h3>
+            <strong>${law.title[lang]}</strong>
+            <p>${law.content[lang]}</p>
+          `;
+          list.appendChild(div);
+        }
       });
     }
+
+    function filterLaw(category) {
+      const keyword = document.getElementById('search').value.trim();
+      renderLaws(category, keyword);
+    }
+
+    document.getElementById('search').addEventListener('input', () => {
+      const keyword = document.getElementById('search').value.trim();
+      renderLaws(currentCategory, keyword);
+    });
+
+    let currentCategory = 'all';
+
     document.addEventListener('DOMContentLoaded', () => {
-      const lang = localStorage.getItem('lang') || 'zh';
-      setLang(lang);
-    });
-    fetch('nav.html').then(res => res.text()).then(data => {
-      document.getElementById('nav-include').innerHTML = data;
-    });
-    fetch('footer.html').then(res => res.text()).then(data => {
-      document.getElementById('footer-include').innerHTML = data;
+      fetch('nav.html').then(res => res.text()).then(data => {
+        document.getElementById('nav-include').innerHTML = data;
+      });
+      fetch('footer.html').then(res => res.text()).then(data => {
+        document.getElementById('footer-include').innerHTML = data;
+      });
+      renderLaws();
     });
   </script>
 </body>
