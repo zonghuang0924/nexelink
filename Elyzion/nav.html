@@ -1,6 +1,11 @@
 <!-- nav.html -->
 <header class="ely-navbar">
   <div class="nav-container">
+    <div class="lang-switcher">
+    <button onclick="setLang('zh')">繁體</button>
+    <button onclick="setLang('en')">EN</button>
+    <button onclick="setLang('ja')">JP</button>
+    </div>
     <a href="index.html" class="logo">ELY</a>
     <nav class="nav-links">
       <a href="index.html">Home</a>
@@ -88,6 +93,25 @@ window.addEventListener('scroll', function () {
   flex-direction: column;
   cursor: pointer;
 }
+.lang-switcher {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.2rem;
+    display: flex;
+    gap: 0.5rem;
+}
+.lang-switcher button {
+    background: transparent;
+    border: 1px solid #ff6a00;
+    color: #ff6a00;
+    padding: 0.2rem 0.6rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.lang-switcher button:hover {
+    background: #ff6a00;
+    color: #000;
+}
 .hamburger span {
   height: 3px;
   width: 25px;
@@ -115,3 +139,16 @@ window.addEventListener('scroll', function () {
 }
 </style>
 
+<script>
+  function setLang(lang) {
+    localStorage.setItem('lang', lang);
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      el.style.display = (el.dataset.lang === lang) ? 'inline' : 'none';
+    });
+  }
+  // 頁面載入時自動載入語言
+  window.addEventListener('DOMContentLoaded', () => {
+    const lang = localStorage.getItem('lang') || 'zh';
+    setLang(lang);
+  });
+</script>

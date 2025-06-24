@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ELY Kingdom Survival Server</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Rajdhani&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<style>
+    /* === 全站通用 === */
+body {
+  margin: 0;
+  font-family: 'Rajdhani', sans-serif;
+  background: linear-gradient(to bottom, #0a0a0a, #1c1c1c);
+  color: #fff;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.section {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #ff6a00;
+  margin-bottom: 2rem;
+}
+.btn-join, .btn-more {
+  display: inline-block;
+  background: #ff6a00;
+  color: #000;
+  padding: 0.8rem 1.5rem;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: 0.3s ease-in-out;
+}
+.btn-join:hover, .btn-more:hover {
+  background: #ffa94d;
+  box-shadow: 0 0 15px #ff6a00, 0 0 5px #ff6a00 inset;
+}
+
+/* === Hero === */
+.hero {
+  height: 100vh;
+  background: url('img/ely-bg.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+.hero-inner {
+  position: relative;
+  z-index: 2;
+}
+.hero-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3.5rem;
+  color: #ff6a00;
+  text-shadow: 0 0 12px #000;
+}
+.hero-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* === 王國區塊 === */
+.kingdoms-grid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.kingdom-card {
+  background: #222;
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 0 10px #111;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.kingdom-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 20px #ff6a00;
+}
+.kingdom-card img {
+  width: 80px;
+  margin-bottom: 1rem;
+}
+
+/* === 商城展示區 === */
+.shop-grid {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.shop-item {
+  background: #111;
+  border-radius: 10px;
+  padding: 1rem;
+  width: 200px;
+  text-align: center;
+  transition: 0.3s;
+}
+.shop-item img {
+  width: 100px;
+  margin-bottom: 0.5rem;
+}
+.shop-item:hover {
+  box-shadow: 0 0 12px #ff6a00;
+}
+
+/* === 活動公告區 === */
+.event-list {
+  list-style: none;
+  padding-left: 1rem;
+}
+.event-list li {
+  padding: 0.5rem 0;
+  border-left: 4px solid #ff6a00;
+  margin-bottom: 0.5rem;
+  padding-left: 1rem;
+  background: #1a1a1a;
+}
+
+/* === Call to Action === */
+.call-to-action {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: radial-gradient(circle, #ff6a00 0%, #000 100%);
+  color: black;
+}
+.call-to-action h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* === 響應式設計 === */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+  .kingdoms-grid, .shop-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+  .section {
+    padding: 3rem 1.2rem;
+  }
+}
+
+</style>
+<body>
+
+  <!-- 導入導覽列 -->
+  <div id="nav-include"></div>
+
+ 
+  <!-- Hero 區塊 -->
+  <section class="hero">
+    <div class="hero-inner">
+      <h1 class="hero-title">
+        <span data-lang="zh">ELY 王國伺服器</span>
+        <span data-lang="en">ELY Kingdom Server</span>
+        <span data-lang="ja">ELY王国サーバー</span>
+      </h1>
+      <p class="hero-subtitle">
+        <span data-lang="zh">生存・建設・征服 — 加入你的王國！</span>
+        <span data-lang="en">Survive • Build • Conquer — Join your Kingdom!</span>
+        <span data-lang="ja">サバイバル・建築・征服 — 王国に参加せよ！</span>
+      </p>
+      <a href="join.html" class="btn-join">
+        <span data-lang="zh">立即加入</span>
+        <span data-lang="en">Join Now</span>
+        <span data-lang="ja">今すぐ参加</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 王國展示 -->
+  <section class="section kingdoms-section">
+    <h2 class="section-title">
+      <span data-lang="zh">三大王國</span>
+      <span data-lang="en">Three Great Kingdoms</span>
+      <span data-lang="ja">三大王国</span>
+    </h2>
+    <div class="kingdoms-grid">
+      <div class="kingdom-card">
+        <img src="img/hestia_flag.png" alt="Hestia">
+        <h3>Hestia</h3>
+        <p data-lang="zh">火焰之心，熱血與和平的守護者。</p>
+        <p data-lang="en">The heart of fire. Guardians of peace and passion.</p>
+        <p data-lang="ja">炎の心。熱血と平和の守護者。</p>
+      </div>
+      <div class="kingdom-card">
+        <img src="img/baisaya_flag.png" alt="Baisaya Federation">
+        <h3>Baisaya Federation</h3>
+        <p data-lang="zh">科技與鋼鐵打造的強國，信仰戰爭與榮耀。</p>
+        <p data-lang="en">A nation of tech and steel, forged in glory.</p>
+        <p data-lang="ja">科学と鉄で築かれた強国、栄光を信じる。</p>
+      </div>
+      <div class="kingdom-card">
+        <img src="img/yinti_flag.png" alt="Yinti Nation">
+        <h3>Yinti Nation</h3>
+        <p data-lang="zh">神秘古老的智慧國度，善於魔法與隱秘行動。</p>
+        <p data-lang="en">Ancient, wise, and masters of magic.</p>
+        <p data-lang="ja">神秘と知恵に満ちた古代の国。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 商城精選 -->
+  <section class="section shop-preview">
+    <h2 class="section-title">
+      <span data-lang="zh">商城精選</span>
+      <span data-lang="en">Shop Highlights</span>
+      <span data-lang="ja">ショップ特集</span>
+    </h2>
+    <div class="shop-grid">
+      <div class="shop-item">
+        <img src="img/item1.png" alt="Flame Sword">
+        <p>🔥 Flame Sword – 50 Ely</p>
+      </div>
+      <div class="shop-item">
+        <img src="img/item2.png" alt="Kingdom Cloak">
+        <p>🧥 Kingdom Cloak – 75 Ely</p>
+      </div>
+      <div class="shop-item">
+        <img src="img/item3.png" alt="War Banner">
+        <p>⚑ War Banner – 120 Ely</p>
+      </div>
+    </div>
+    <a href="shop.html" class="btn-more">
+      <span data-lang="zh">查看更多商品</span>
+      <span data-lang="en">Browse More</span>
+      <span data-lang="ja">もっと見る</span>
+    </a>
+  </section>
+
+  <!-- 活動公告 -->
+  <section class="section news-section">
+    <h2 class="section-title">
+      <span data-lang="zh">最新活動</span>
+      <span data-lang="en">Latest Events</span>
+      <span data-lang="ja">最新イベント</span>
+    </h2>
+    <ul class="event-list">
+      <li><strong>🔥 Kingdom War:</strong> Baisaya vs Yinti — 6/30 20:00 開戰！</li>
+      <li><strong>🎁 簽到活動:</strong> 每日登入送 Ely 幣與裝備！</li>
+      <li><strong>🧱 建國申請開放:</strong> 成立你自己的國家！</li>
+    </ul>
+    <a href="events.html" class="btn-more">
+      <span data-lang="zh">查看全部活動</span>
+      <span data-lang="en">View All Events</span>
+      <span data-lang="ja">すべてのイベントを見る</span>
+    </a>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="section call-to-action">
+    <h2>
+      <span data-lang="zh">你準備好建立自己的王國了嗎？</span>
+      <span data-lang="en">Are You Ready to Build Your Kingdom?</span>
+      <span data-lang="ja">あなたの王国を築く準備はできましたか？</span>
+    </h2>
+    <a href="nation_apply.html" class="btn-join">
+      <span data-lang="zh">申請建國</span>
+      <span data-lang="en">Apply Now</span>
+      <span data-lang="ja">建国を申請する</span>
+    </a>
+  </section>
+
+  <!-- 導入 footer -->
+  <div id="footer-include"></div>
+
+  <!-- 語言切換腳本 -->
+  <script>
+    function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = (el.dataset.lang === lang) ? 'inline' : 'none';
+      });
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const lang = localStorage.getItem('lang') || 'zh';
+      setLang(lang);
+    });
+  </script>
+
+  <!-- 導入 nav/footer -->
+  <script>
+    fetch('nav.html').then(res => res.text()).then(data => {
+      document.getElementById('nav-include').innerHTML = data;
+    });
+    fetch('footer.html').then(res => res.text()).then(data => {
+      document.getElementById('footer-include').innerHTML = data;
+    });
+  </script>
+</body>
+</html>
