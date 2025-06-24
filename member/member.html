@@ -70,7 +70,16 @@
   </style>
 </head>
 <body>
-  <iframe src="/components/navbar.html" style="position: fixed; top: 0; left: 0; width: 240px; height: 100vh; border: none;"></iframe>
+  <!-- 🎯 滑鼠光環 -->
+  <div class="cursor" id="cursor"></div>
+
+<!-- 載入 Nav -->
+<div id="navbar"></div>
+<script>
+  fetch("/components/navbar.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("navbar").innerHTML = data);
+</script>
 
   <main>
     <h1>👋 歡迎回來，使用者！</h1>
@@ -111,6 +120,21 @@
     </div>
   </main>
 
-  <iframe src="/components/footer.html" style="width: calc(100% - 240px); height: 50px; border: none; position: fixed; bottom: 0; left: 240px;"></iframe>
+  <!-- 載入 Footer -->
+<div id="footer"></div>
+<script>
+  fetch("/components/footer.html")
+    .then(res => res.text())
+    .then(data => document.getElementById("footer").innerHTML = data);
+</script>
+
+  <!-- ✨ 滑鼠光圈 JS -->
+  <script>
+    const cursor = document.getElementById("cursor");
+    document.addEventListener("mousemove", (e) => {
+      cursor.style.left = e.pageX + "px";
+      cursor.style.top = e.pageY + "px";
+    });
+  </script>
 </body>
 </html>
