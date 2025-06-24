@@ -1,0 +1,117 @@
+<!-- nav.html -->
+<header class="ely-navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">ELY</a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="join.html">Join</a>
+      <a href="kingdoms.html">Kingdoms</a>
+      <a href="shop.html">Shop</a>
+      <a href="nation_apply.html">Found Nation</a>
+      <a href="ranks.html">Ranks</a>
+      <a href="laws.html">Laws</a>
+      <a href="events.html">Events</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<script>
+function toggleMenu() {
+  document.querySelector('.nav-links').classList.toggle('active');
+}
+window.addEventListener('scroll', function () {
+  const nav = document.querySelector('.ely-navbar');
+  if (window.scrollY > 10) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+</script>
+
+<style>
+.ely-navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  transition: all 0.3s;
+}
+.ely-navbar.scrolled {
+  background: rgba(0, 0, 0, 0.95);
+}
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+.logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  color: #ff6a00;
+  text-decoration: none;
+  font-weight: bold;
+}
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: #ff6a00;
+  transition: width 0.3s;
+}
+.nav-links a:hover::after {
+  width: 100%;
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+.hamburger span {
+  height: 3px;
+  width: 25px;
+  background: white;
+  margin: 4px 0;
+}
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background: rgba(0,0,0,0.95);
+    width: 100%;
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem 0;
+  }
+  .nav-links.active {
+    display: flex;
+  }
+  .hamburger {
+    display: flex;
+  }
+}
+</style>
+
