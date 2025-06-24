@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexelink 會員中心</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+    }
+
+    main {
+      margin-left: 260px;
+      padding: 60px 40px 100px 40px;
+    }
+
+    h1 {
+      font-size: 30px;
+      margin-bottom: 20px;
+      animation: floatIn 1s ease-out;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 0 12px rgba(0,255,255,0.08);
+      animation: floatIn 1.2s ease-out;
+    }
+
+    .card h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      margin: 4px 0;
+      color: #cceeff;
+      font-size: 15px;
+    }
+
+    .btn {
+      margin-top: 12px;
+      display: inline-block;
+      padding: 10px 20px;
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: transform 0.2s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <iframe src="/components/navbar.html" style="position: fixed; top: 0; left: 0; width: 240px; height: 100vh; border: none;"></iframe>
+
+  <main>
+    <h1>👋 歡迎回來，使用者！</h1>
+
+    <div class="grid">
+      <div class="card">
+        <h2>🎮 Minecraft 主機狀態</h2>
+        <p>方案：進階型 Pro</p>
+        <p>狀態：🟢 運行中</p>
+        <a class="btn" href="server-console.html">控制台</a>
+      </div>
+
+      <div class="card">
+        <h2>💰 Ely 幣帳戶</h2>
+        <p>目前餘額：200 Ely</p>
+        <a class="btn" href="ely-wallet.html">查看錢包</a>
+      </div>
+
+      <div class="card">
+        <h2>🎬 影片與設計服務</h2>
+        <p>剪輯進度：✔️ 完成</p>
+        <p>網頁建置：進行中（60%）</p>
+        <a class="btn" href="projects.html">查看進度</a>
+      </div>
+
+      <div class="card">
+        <h2>📨 系統通知</h2>
+        <p>✔️ 您的伺服器已自動備份</p>
+        <p>⚠️ Ely 幣使用政策將於 7/1 調整</p>
+        <a class="btn" href="notifications.html">查看全部</a>
+      </div>
+
+      <div class="card">
+        <h2>⚙️ 快速設定</h2>
+        <p>修改密碼 / 帳號資料 / API 金鑰</p>
+        <a class="btn" href="/member/setting.html">前往設定</a>
+      </div>
+    </div>
+  </main>
+
+  <iframe src="/components/footer.html" style="width: calc(100% - 240px); height: 50px; border: none; position: fixed; bottom: 0; left: 240px;"></iframe>
+</body>
+</html>

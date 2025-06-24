@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>個人資訊設定 - Nexelink</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+    }
+
+    main {
+      margin-left: 260px;
+      padding: 60px 40px 100px 40px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 30px;
+      animation: floatIn 1s ease-out;
+    }
+
+    form {
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 12px rgba(0,255,255,0.1);
+      animation: floatIn 1.2s ease-out;
+    }
+
+    label {
+      display: block;
+      margin-top: 20px;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 12px 20px;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <iframe src="/components/navbar.html" style="position: fixed; top: 0; left: 0; width: 240px; height: 100vh; border: none;"></iframe>
+
+  <main>
+    <h1>🧑‍💼 個人資訊設定</h1>
+    <form>
+      <label for="username">使用者名稱</label>
+      <input type="text" id="username" placeholder="輸入使用者名稱" />
+
+      <label for="email">電子郵件</label>
+      <input type="email" id="email" placeholder="輸入 Email" />
+
+      <label for="password">新密碼</label>
+      <input type="password" id="password" placeholder="輸入新密碼" />
+
+      <label for="role">使用者身份</label>
+      <select id="role">
+        <option>一般會員</option>
+        <option>管理員</option>
+        <option>技術人員</option>
+      </select>
+
+      <button type="submit">儲存變更</button>
+    </form>
+  </main>
+
+  <iframe src="/components/footer.html" style="width: calc(100% - 240px); height: 50px; border: none; position: fixed; bottom: 0; left: 240px;"></iframe>
+</body>
+</html>
