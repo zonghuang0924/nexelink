@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>活動公告 | ELY Kingdom</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Rajdhani&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Rajdhani', sans-serif;
+      background: linear-gradient(to bottom, #0a0a0a, #1c1c1c);
+      color: #fff;
+    }
+    .section {
+      padding: 4rem 2rem;
+      max-width: 960px;
+      margin: auto;
+      line-height: 1.8;
+    }
+    h1 {
+      text-align: center;
+      color: #ff6a00;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 2rem;
+    }
+    .event {
+      margin-bottom: 2.5rem;
+      border-left: 4px solid #ff6a00;
+      padding-left: 1rem;
+    }
+    .event h2 {
+      color: #ff6a00;
+      margin-bottom: 0.5rem;
+    }
+    .event-date {
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+    @media (max-width: 768px) {
+      .section { padding: 2rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- nav -->
+  <div id="nav-include"></div>
+
+  <section class="section">
+    <h1>
+      <span data-lang="zh">活動公告</span>
+      <span data-lang="en">Events</span>
+      <span data-lang="ja">イベント情報</span>
+    </h1>
+
+    <div class="event">
+      <h2>
+        <span data-lang="zh">🔥 王國之戰：第一季</span>
+        <span data-lang="en">🔥 Kingdom War: Season 1</span>
+        <span data-lang="ja">🔥 王国戦争：シーズン1</span>
+      </h2>
+      <div class="event-date">2025/07/15</div>
+      <p data-lang="zh">
+        預計開打第一季王國戰，玩家可組成同盟、發起宣戰與佔領。勝方將獲得 Ely 幣與特殊稱號獎勵。
+      </p>
+      <p data-lang="en">
+        Season 1 of Kingdom War is coming! Form alliances, declare war, and seize land. Winners will earn Ely Coins and exclusive titles.
+      </p>
+      <p data-lang="ja">
+        第1回王国戦争が始まります！同盟を結び、戦争を仕掛け、領土を奪取しましょう。勝者にはELYコインと限定称号を授与！
+      </p>
+    </div>
+
+    <div class="event">
+      <h2>
+        <span data-lang="zh">🎉 夏日建築比賽</span>
+        <span data-lang="en">🎉 Summer Build Contest</span>
+        <span data-lang="ja">🎉 サマー建築大会</span>
+      </h2>
+      <div class="event-date">2025/08/01 - 2025/08/15</div>
+      <p data-lang="zh">
+        參加夏季主題建築比賽，展示你的創意與美感。前五名將展示在 Ely 博物館並頒發 Ely 幣。
+      </p>
+      <p data-lang="en">
+        Join the summer-themed build contest and show off your creativity! Top 5 entries will be featured in the Ely Museum with Ely Coin rewards.
+      </p>
+      <p data-lang="ja">
+        夏をテーマにした建築大会に参加しよう！上位5作品はELY博物館に展示され、ELYコインが贈られます。
+      </p>
+    </div>
+
+    <div class="event">
+      <h2>
+        <span data-lang="zh">🎮 PvP 擂台熱身賽</span>
+        <span data-lang="en">🎮 PvP Arena Warm-up</span>
+        <span data-lang="ja">🎮 PvPアリーナ予選</span>
+      </h2>
+      <div class="event-date">2025/07/05</div>
+      <p data-lang="zh">
+        測試新 PvP 擂台！參加者可試玩新版裝備與技能模組，回報 BUG 並享有 Ely 幣鼓勵。
+      </p>
+      <p data-lang="en">
+        Try out the new PvP Arena! Participants can test updated gear and skill modules, and report bugs for Ely Coin rewards.
+      </p>
+      <p data-lang="ja">
+        新PvPアリーナを体験しよう！新装備やスキルシステムを試して、バグ報告でELYコインをゲット！
+      </p>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <div id="footer-include"></div>
+
+  <script>
+    function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = (el.dataset.lang === lang) ? 'inline' : 'none';
+      });
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const lang = localStorage.getItem('lang') || 'zh';
+      setLang(lang);
+    });
+    fetch('nav.html').then(res => res.text()).then(data => {
+      document.getElementById('nav-include').innerHTML = data;
+    });
+    fetch('footer.html').then(res => res.text()).then(data => {
+      document.getElementById('footer-include').innerHTML = data;
+    });
+  </script>
+</body>
+</html>

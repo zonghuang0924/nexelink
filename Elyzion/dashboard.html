@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>我的 Ely 帳戶 | ELY Kingdom</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Rajdhani&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Rajdhani', sans-serif;
+      background: linear-gradient(to bottom, #0a0a0a, #1c1c1c);
+      color: #fff;
+    }
+    a { text-decoration: none; color: inherit; }
+    .section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      color: #ff6a00;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 2rem;
+    }
+    .card-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .card {
+      background: #1a1a1a;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #111;
+      width: 280px;
+      text-align: center;
+    }
+    .card h3 {
+      color: #ff6a00;
+      margin-bottom: 0.5rem;
+    }
+    .card p {
+      font-size: 1.2rem;
+    }
+    .record-list {
+      margin-top: 2rem;
+      background: #1a1a1a;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #111;
+    }
+    .record-list h3 {
+      color: #ff6a00;
+      margin-bottom: 1rem;
+    }
+    .record-list ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+    .record-list li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #333;
+    }
+    @media (max-width: 768px) {
+      .card { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- nav -->
+  <div id="nav-include"></div>
+
+  <section class="section">
+    <h1>
+      <span data-lang="zh">我的 Ely 儀表板</span>
+      <span data-lang="en">My Ely Dashboard</span>
+      <span data-lang="ja">マイ Ely ダッシュボード</span>
+    </h1>
+
+    <div class="card-grid">
+      <div class="card">
+        <h3><span data-lang="zh">Ely 幣餘額</span><span data-lang="en">Ely Coins</span><span data-lang="ja">ELY コイン</span></h3>
+        <p>✨ <strong>310</strong> Ely</p>
+      </div>
+      <div class="card">
+        <h3><span data-lang="zh">所屬王國</span><span data-lang="en">Kingdom</span><span data-lang="ja">所属王国</span></h3>
+        <p>🏰 Hestia</p>
+      </div>
+      <div class="card">
+        <h3><span data-lang="zh">我的稱號</span><span data-lang="en">Title</span><span data-lang="ja">称号</span></h3>
+        <p>🔥 烈焰征服者</p>
+      </div>
+    </div>
+
+    <div class="record-list">
+      <h3>
+        <span data-lang="zh">近期商城紀錄</span>
+        <span data-lang="en">Recent Shop History</span>
+        <span data-lang="ja">最近のショップ履歴</span>
+      </h3>
+      <ul>
+        <li>🛡 War Banner – 80 Ely</li>
+        <li>🧥 Kingdom Cloak – 75 Ely</li>
+        <li>✨ Buff 卡 – 30 Ely</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- footer -->
+  <div id="footer-include"></div>
+
+  <!-- JS：語言切換 + 導入 nav/footer -->
+  <script>
+    function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = (el.dataset.lang === lang) ? 'inline' : 'none';
+      });
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const lang = localStorage.getItem('lang') || 'zh';
+      setLang(lang);
+    });
+    fetch('nav.html').then(res => res.text()).then(data => {
+      document.getElementById('nav-include').innerHTML = data;
+    });
+    fetch('footer.html').then(res => res.text()).then(data => {
+      document.getElementById('footer-include').innerHTML = data;
+    });
+  </script>
+</body>
+</html>

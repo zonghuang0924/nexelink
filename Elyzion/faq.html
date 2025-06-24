@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>常見問題 | ELY Kingdom</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Rajdhani&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Rajdhani', sans-serif;
+      background: linear-gradient(to bottom, #0a0a0a, #1c1c1c);
+      color: #fff;
+    }
+    .section {
+      padding: 4rem 2rem;
+      max-width: 960px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      color: #ff6a00;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 2rem;
+    }
+    details {
+      margin-bottom: 1.5rem;
+      border-left: 4px solid #ff6a00;
+      padding-left: 1rem;
+      cursor: pointer;
+    }
+    summary {
+      font-size: 1.2rem;
+      font-weight: bold;
+      outline: none;
+    }
+    summary:hover {
+      color: #ffaa33;
+    }
+    p {
+      margin-top: 0.5rem;
+      padding-left: 0.5rem;
+      font-size: 1.05rem;
+    }
+    @media (max-width: 768px) {
+      .section { padding: 2rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- nav -->
+  <div id="nav-include"></div>
+
+  <section class="section">
+    <h1>
+      <span data-lang="zh">常見問題</span>
+      <span data-lang="en">FAQ</span>
+      <span data-lang="ja">よくある質問</span>
+    </h1>
+
+    <details>
+      <summary data-lang="zh">我該如何加入 ELY 伺服器？</summary>
+      <summary data-lang="en">How can I join the ELY server?</summary>
+      <summary data-lang="ja">ELYサーバーに参加するには？</summary>
+      <p data-lang="zh">請前往「加入頁面」填寫表單並等待管理員審核通過。</p>
+      <p data-lang="en">Go to the “Join” page, fill out the form, and wait for admin approval.</p>
+      <p data-lang="ja">「参加ページ」でフォームに記入し、管理者の承認を待ってください。</p>
+    </details>
+
+    <details>
+      <summary data-lang="zh">ELY 幣要怎麼獲得？</summary>
+      <summary data-lang="en">How do I earn Ely Coins?</summary>
+      <summary data-lang="ja">ELYコインはどうやって入手する？</summary>
+      <p data-lang="zh">可透過活動、建設貢獻、貿易與任務取得 Ely 幣。</p>
+      <p data-lang="en">You can earn Ely Coins by participating in events, building, trading, and completing quests.</p>
+      <p data-lang="ja">イベント参加、建築、貿易、クエスト達成でELYコインを獲得できます。</p>
+    </details>
+
+    <details>
+      <summary data-lang="zh">可以創立自己的國家嗎？</summary>
+      <summary data-lang="en">Can I create my own kingdom?</summary>
+      <summary data-lang="ja">自分の国を作れますか？</summary>
+      <p data-lang="zh">可以！請在建國頁面填寫資料，並提交審核。</p>
+      <p data-lang="en">Yes! Submit your application through the “Found Kingdom” page.</p>
+      <p data-lang="ja">はい！「建国申請ページ」で申請してください。</p>
+    </details>
+
+    <details>
+      <summary data-lang="zh">被誤判封鎖怎麼辦？</summary>
+      <summary data-lang="en">What if I got banned unfairly?</summary>
+      <summary data-lang="ja">誤BANされた場合は？</summary>
+      <p data-lang="zh">可透過客服或法律系統提出上訴，並由管理員審查。</p>
+      <p data-lang="en">You may appeal through the customer service or law system.</p>
+      <p data-lang="ja">カスタマーサービスまたは法務システムで異議申し立てが可能です。</p>
+    </details>
+  </section>
+
+  <!-- footer -->
+  <div id="footer-include"></div>
+
+  <script>
+    function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = (el.dataset.lang === lang) ? 'inline' : 'none';
+      });
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const lang = localStorage.getItem('lang') || 'zh';
+      setLang(lang);
+    });
+    fetch('nav.html').then(res => res.text()).then(data => {
+      document.getElementById('nav-include').innerHTML = data;
+    });
+    fetch('footer.html').then(res => res.text()).then(data => {
+      document.getElementById('footer-include').innerHTML = data;
+    });
+  </script>
+</body>
+</html>

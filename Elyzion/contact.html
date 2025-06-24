@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>聯絡我們 | ELY Kingdom</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Rajdhani&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Rajdhani', sans-serif;
+      background: linear-gradient(to bottom, #0a0a0a, #1c1c1c);
+      color: #fff;
+    }
+    .section {
+      padding: 4rem 2rem;
+      max-width: 960px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      color: #ff6a00;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 2rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    input, textarea, select {
+      padding: 0.8rem;
+      background-color: #1a1a1a;
+      border: 1px solid #444;
+      color: #fff;
+      font-size: 1rem;
+      border-radius: 4px;
+    }
+    button {
+      background: linear-gradient(to right, #ff6a00, #ff3c00);
+      color: #fff;
+      border: none;
+      padding: 0.8rem;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #ff6a00;
+    }
+    @media (max-width: 768px) {
+      .section { padding: 2rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- nav -->
+  <div id="nav-include"></div>
+
+  <section class="section">
+    <h1>
+      <span data-lang="zh">聯絡我們</span>
+      <span data-lang="en">Contact Us</span>
+      <span data-lang="ja">お問い合わせ</span>
+    </h1>
+
+    <form id="contact-form">
+      <input type="text" name="name" required
+        placeholder="👤 姓名 / Name / お名前">
+      <input type="email" name="email" required
+        placeholder="📧 電子郵件 / Email">
+      <select name="type" required>
+        <option disabled selected value="">📂 請選擇問題類型</option>
+        <option value="report" data-lang="zh">問題回報</option>
+        <option value="report" data-lang="en">Bug Report</option>
+        <option value="report" data-lang="ja">バグ報告</option>
+
+        <option value="appeal" data-lang="zh">上訴申請</option>
+        <option value="appeal" data-lang="en">Ban Appeal</option>
+        <option value="appeal" data-lang="ja">BAN異議</option>
+
+        <option value="partnership" data-lang="zh">合作提案</option>
+        <option value="partnership" data-lang="en">Partnership</option>
+        <option value="partnership" data-lang="ja">提携希望</option>
+      </select>
+      <textarea name="message" rows="6" required
+        placeholder="📝 您的訊息 / Message / メッセージ"></textarea>
+      <button type="submit">
+        <span data-lang="zh">提交表單</span>
+        <span data-lang="en">Submit</span>
+        <span data-lang="ja">送信する</span>
+      </button>
+    </form>
+  </section>
+
+  <!-- footer -->
+  <div id="footer-include"></div>
+
+  <script>
+    function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = (el.dataset.lang === lang) ? 'inline' : 'none';
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const lang = localStorage.getItem('lang') || 'zh';
+      setLang(lang);
+
+      fetch('nav.html').then(res => res.text()).then(data => {
+        document.getElementById('nav-include').innerHTML = data;
+      });
+      fetch('footer.html').then(res => res.text()).then(data => {
+        document.getElementById('footer-include').innerHTML = data;
+      });
+
+      document.getElementById('contact-form').addEventListener('submit', e => {
+        e.preventDefault();
+        alert('✅ 表單已送出（模擬中）！');
+      });
+    });
+  </script>
+</body>
+</html>

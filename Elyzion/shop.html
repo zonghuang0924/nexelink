@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ELY商城 | ELY Kingdom</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Rajdhani&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Rajdhani', sans-serif;
+      background: linear-gradient(to bottom, #0a0a0a, #1c1c1c);
+      color: #fff;
+    }
+    a { text-decoration: none; color: inherit; }
+    .section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      color: #ff6a00;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 2rem;
+    }
+    .shop-grid {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .shop-item {
+      background: #1a1a1a;
+      padding: 1rem;
+      border-radius: 12px;
+      text-align: center;
+      width: 240px;
+      box-shadow: 0 0 10px #111;
+      transition: 0.3s;
+    }
+    .shop-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 12px #ff6a00;
+    }
+    .shop-item img {
+      width: 80px;
+      margin-bottom: 1rem;
+    }
+    .item-name {
+      font-weight: bold;
+      margin: 0.5rem 0;
+    }
+    .item-price {
+      color: #ff6a00;
+      font-weight: bold;
+    }
+    .btn-more {
+      display: block;
+      width: fit-content;
+      margin: 2rem auto 0;
+      padding: 0.8rem 1.5rem;
+      background: #ff6a00;
+      color: #000;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+    .btn-more:hover {
+      background: #ffa94d;
+      box-shadow: 0 0 10px #ff6a00;
+    }
+    @media (max-width: 768px) {
+      .section { padding: 2rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- nav -->
+  <div id="nav-include"></div>
+
+  <section class="section">
+    <h1>
+      <span data-lang="zh">ELY商城</span>
+      <span data-lang="en">ELY Shop</span>
+      <span data-lang="ja">ELYショップ</span>
+    </h1>
+
+    <div class="shop-grid">
+
+      <div class="shop-item">
+        <img src="img/item1.png" alt="Flame Sword">
+        <div class="item-name">🔥 Flame Sword</div>
+        <div class="item-price">50 Ely</div>
+      </div>
+
+      <div class="shop-item">
+        <img src="img/item2.png" alt="War Banner">
+        <div class="item-name">⚑ War Banner</div>
+        <div class="item-price">80 Ely</div>
+      </div>
+
+      <div class="shop-item">
+        <img src="img/item3.png" alt="Kingdom Cloak">
+        <div class="item-name">🧥 Kingdom Cloak</div>
+        <div class="item-price">70 Ely</div>
+      </div>
+
+      <div class="shop-item">
+        <img src="img/item4.png" alt="ELY Cape">
+        <div class="item-name">🧣 ELY Cape</div>
+        <div class="item-price">65 Ely</div>
+      </div>
+
+      <div class="shop-item">
+        <img src="img/item5.png" alt="Builder Title">
+        <div class="item-name">🏗 建築師稱號</div>
+        <div class="item-price">100 Ely</div>
+      </div>
+
+      <div class="shop-item">
+        <img src="img/item6.png" alt="Buff Card">
+        <div class="item-name">✨ ELY Buff 卡</div>
+        <div class="item-price">30 Ely</div>
+      </div>
+
+    </div>
+
+    <a href="#" class="btn-more">
+      <span data-lang="zh">查看更多商品</span>
+      <span data-lang="en">View More</span>
+      <span data-lang="ja">さらに見る</span>
+    </a>
+  </section>
+
+  <!-- footer -->
+  <div id="footer-include"></div>
+
+  <!-- JS：語言切換 + 導入 nav/footer -->
+  <script>
+    function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = (el.dataset.lang === lang) ? 'inline' : 'none';
+      });
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const lang = localStorage.getItem('lang') || 'zh';
+      setLang(lang);
+    });
+    fetch('nav.html').then(res => res.text()).then(data => {
+      document.getElementById('nav-include').innerHTML = data;
+    });
+    fetch('footer.html').then(res => res.text()).then(data => {
+      document.getElementById('footer-include').innerHTML = data;
+    });
+  </script>
+</body>
+</html>

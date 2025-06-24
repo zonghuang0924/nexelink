@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>關於 ELY | ELY Kingdom</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Rajdhani&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Rajdhani', sans-serif;
+      background: linear-gradient(to bottom, #0a0a0a, #1c1c1c);
+      color: #fff;
+    }
+    a { text-decoration: none; color: inherit; }
+    .section {
+      padding: 4rem 2rem;
+      max-width: 960px;
+      margin: auto;
+      line-height: 1.8;
+    }
+    h1 {
+      text-align: center;
+      color: #ff6a00;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 2rem;
+    }
+    h2 {
+      color: #ff6a00;
+      margin-top: 2.5rem;
+    }
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .section { padding: 2rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- nav -->
+  <div id="nav-include"></div>
+
+  <section class="section">
+    <h1>
+      <span data-lang="zh">關於 ELY</span>
+      <span data-lang="en">About ELY</span>
+      <span data-lang="ja">ELYについて</span>
+    </h1>
+
+    <h2>
+      <span data-lang="zh">🏰 伺服器介紹</span>
+      <span data-lang="en">🏰 Server Overview</span>
+      <span data-lang="ja">🏰 サーバー紹介</span>
+    </h2>
+    <p data-lang="zh">
+      ELY 是一個以「王國生存」為核心架構的 Minecraft 多人伺服器，結合戰爭、法律、經濟與建設系統。玩家可選擇加入不同王國、建立勢力、參與外交與戰爭，創造屬於自己的歷史。
+    </p>
+    <p data-lang="en">
+      ELY is a Minecraft multiplayer server centered around kingdom-based survival. It combines warfare, law, economy, and construction systems. Players can join kingdoms, form factions, engage in diplomacy and war, and create their own legacy.
+    </p>
+    <p data-lang="ja">
+      ELYは王国サバイバルを中心としたMinecraftマルチプレイヤーサーバーであり、戦争・法律・経済・建築を組み合わせています。プレイヤーは王国に所属し、外交や戦争に参加し、自らの歴史を築けます。
+    </p>
+
+    <h2>
+      <span data-lang="zh">🔥 我們的理念</span>
+      <span data-lang="en">🔥 Our Vision</span>
+      <span data-lang="ja">🔥 私たちの理念</span>
+    </h2>
+    <p data-lang="zh">
+      我們致力打造一個融合「現實制度」與「遊戲自由」的 Minecraft 世界。每位玩家的選擇都將對世界產生影響，讓遊戲更有深度與真實感。
+    </p>
+    <p data-lang="en">
+      Our vision is to build a Minecraft world that blends real-world systems with sandbox freedom. Every player's choices will affect the server's development, making the experience richer and more immersive.
+    </p>
+    <p data-lang="ja">
+      私たちは「現実の制度」と「自由なゲーム性」を融合したMinecraftの世界を創造することを目指しています。プレイヤーの選択一つひとつが世界に影響を与え、より深くリアルな体験を実現します。
+    </p>
+
+    <h2>
+      <span data-lang="zh">👑 開發團隊與願景</span>
+      <span data-lang="en">👑 Development Team & Goals</span>
+      <span data-lang="ja">👑 開発チームと目標</span>
+    </h2>
+    <p data-lang="zh">
+      ELY 由一群熱愛 Minecraft 與世界構築的玩家組成，團隊涵蓋伺服器技術、美術設計、社群管理與遊戲規則規劃。我們的目標是建立一個能自我演化、由玩家共同維護的數位王國。
+    </p>
+    <p data-lang="en">
+      ELY is built by a team of Minecraft enthusiasts specializing in server tech, design, community, and game systems. Our goal is to create a self-evolving digital kingdom shaped and governed by its own players.
+    </p>
+    <p data-lang="ja">
+      ELYはサーバー技術、美術、コミュニティ管理、ルール設計の専門家からなるMinecraft愛好家チームによって開発されています。プレイヤー自らが維持・発展させる「進化する王国」を目指しています。
+    </p>
+  </section>
+
+  <!-- footer -->
+  <div id="footer-include"></div>
+
+  <!-- JS：語言切換 + 導入 nav/footer -->
+  <script>
+    function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = (el.dataset.lang === lang) ? 'inline' : 'none';
+      });
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const lang = localStorage.getItem('lang') || 'zh';
+      setLang(lang);
+    });
+    fetch('nav.html').then(res => res.text()).then(data => {
+      document.getElementById('nav-include').innerHTML = data;
+    });
+    fetch('footer.html').then(res => res.text()).then(data => {
+      document.getElementById('footer-include').innerHTML = data;
+    });
+  </script>
+</body>
+</html>

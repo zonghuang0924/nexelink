@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ELY 戰績排行榜</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Rajdhani&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Rajdhani', sans-serif;
+      background: linear-gradient(to bottom, #0a0a0a, #1c1c1c);
+      color: #fff;
+    }
+    a { text-decoration: none; color: inherit; }
+    .section {
+      padding: 4rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      color: #ff6a00;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 2rem;
+    }
+    .rank-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 3rem;
+      background: #1a1a1a;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 10px #111;
+    }
+    .rank-table caption {
+      background: #ff6a00;
+      color: #000;
+      font-weight: bold;
+      padding: 0.8rem;
+      font-size: 1.2rem;
+    }
+    .rank-table th, .rank-table td {
+      padding: 1rem;
+      text-align: left;
+    }
+    .rank-table tr:nth-child(even) {
+      background: #222;
+    }
+    .rank-table tr:hover {
+      background: #333;
+    }
+    @media (max-width: 768px) {
+      .rank-table th, .rank-table td {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- nav -->
+  <div id="nav-include"></div>
+
+  <section class="section">
+    <h1>
+      <span data-lang="zh">ELY 玩家排行榜</span>
+      <span data-lang="en">ELY Player Rankings</span>
+      <span data-lang="ja">ELYプレイヤーランキング</span>
+    </h1>
+
+    <!-- 擊殺排行榜 -->
+    <table class="rank-table">
+      <caption>
+        <span data-lang="zh">🔥 擊殺排行榜</span>
+        <span data-lang="en">Top Kills</span>
+        <span data-lang="ja">キルランキング</span>
+      </caption>
+      <thead>
+        <tr>
+          <th>#</th><th>玩家名稱</th><th>Kills</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>KingAres</td><td>128</td></tr>
+        <tr><td>2</td><td>MageMika</td><td>97</td></tr>
+        <tr><td>3</td><td>IronNova</td><td>84</td></tr>
+      </tbody>
+    </table>
+
+    <!-- 戰功排行榜 -->
+    <table class="rank-table">
+      <caption>
+        <span data-lang="zh">⚔️ 戰功排行榜</span>
+        <span data-lang="en">Top War Points</span>
+        <span data-lang="ja">戦功ランキング</span>
+      </caption>
+      <thead>
+        <tr>
+          <th>#</th><th>玩家名稱</th><th>戰功</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>NovaKai</td><td>420</td></tr>
+        <tr><td>2</td><td>GhostYen</td><td>385</td></tr>
+        <tr><td>3</td><td>HesRock</td><td>373</td></tr>
+      </tbody>
+    </table>
+
+    <!-- 建築積分排行榜 -->
+    <table class="rank-table">
+      <caption>
+        <span data-lang="zh">🏗 建設排行榜</span>
+        <span data-lang="en">Top Builders</span>
+        <span data-lang="ja">建築ランキング</span>
+      </caption>
+      <thead>
+        <tr>
+          <th>#</th><th>玩家名稱</th><th>建築分</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>StoneZai</td><td>215</td></tr>
+        <tr><td>2</td><td>AquaMoe</td><td>198</td></tr>
+        <tr><td>3</td><td>RedPillar</td><td>183</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Ely 幣貢獻排行榜 -->
+    <table class="rank-table">
+      <caption>
+        <span data-lang="zh">💰 Ely 幣贊助排行</span>
+        <span data-lang="en">Top Ely Contributors</span>
+        <span data-lang="ja">ELY貢献者ランキング</span>
+      </caption>
+      <thead>
+        <tr>
+          <th>#</th><th>玩家名稱</th><th>ELY幣</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>AlexGreen</td><td>1500 Ely</td></tr>
+        <tr><td>2</td><td>LunaSun</td><td>1200 Ely</td></tr>
+        <tr><td>3</td><td>MechaRay</td><td>950 Ely</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- footer -->
+  <div id="footer-include"></div>
+
+  <!-- JS：語言切換 + 導入 nav/footer -->
+  <script>
+    function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = (el.dataset.lang === lang) ? 'inline' : 'none';
+      });
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const lang = localStorage.getItem('lang') || 'zh';
+      setLang(lang);
+    });
+    fetch('nav.html').then(res => res.text()).then(data => {
+      document.getElementById('nav-include').innerHTML = data;
+    });
+    fetch('footer.html').then(res => res.text()).then(data => {
+      document.getElementById('footer-include').innerHTML = data;
+    });
+  </script>
+</body>
+</html>

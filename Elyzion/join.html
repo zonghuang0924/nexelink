@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>加入伺服器 | ELY Kingdom</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Rajdhani&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Rajdhani', sans-serif;
+      background: linear-gradient(to bottom, #0a0a0a, #1c1c1c);
+      color: #fff;
+    }
+    a { text-decoration: none; color: inherit; }
+    .section {
+      padding: 4rem 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      color: #ff6a00;
+      font-family: 'Orbitron', sans-serif;
+      margin-bottom: 2rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      background: #1a1a1a;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 12px #111;
+    }
+    label {
+      font-weight: bold;
+      color: #ff6a00;
+    }
+    input, select, textarea {
+      padding: 0.8rem;
+      border: none;
+      border-radius: 8px;
+      background: #333;
+      color: #fff;
+      font-size: 1rem;
+    }
+    button {
+      background: #ff6a00;
+      color: #000;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #ffa94d;
+      box-shadow: 0 0 10px #ff6a00;
+    }
+    .success-message {
+      margin-top: 1rem;
+      color: #00ff88;
+      text-align: center;
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .section {
+        padding: 2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 導入導覽列 -->
+  <div id="nav-include"></div>
+
+  <!-- 表單主體 -->
+  <section class="section">
+    <h1>
+      <span data-lang="zh">加入伺服器申請表</span>
+      <span data-lang="en">Join Server Application</span>
+      <span data-lang="ja">サーバー参加申請フォーム</span>
+    </h1>
+
+    <form id="joinForm">
+      <div>
+        <label>
+          <span data-lang="zh">Minecraft ID</span>
+          <span data-lang="en">Minecraft ID</span>
+          <span data-lang="ja">Minecraft ID</span>
+        </label>
+        <input type="text" name="mcid" required />
+      </div>
+
+      <div>
+        <label>
+          <span data-lang="zh">Minecraft 版本</span>
+          <span data-lang="en">Minecraft Version</span>
+          <span data-lang="ja">バージョン</span>
+        </label>
+        <input type="text" name="version" placeholder="1.21.4 等" required />
+      </div>
+
+      <div>
+        <label>
+          <span data-lang="zh">Discord 用戶名稱</span>
+          <span data-lang="en">Discord Username</span>
+          <span data-lang="ja">Discord名</span>
+        </label>
+        <input type="text" name="discord" required />
+      </div>
+
+      <div>
+        <label>
+          <span data-lang="zh">年齡</span>
+          <span data-lang="en">Age</span>
+          <span data-lang="ja">年齢</span>
+        </label>
+        <input type="number" name="age" required />
+      </div>
+
+      <div>
+        <label>
+          <span data-lang="zh">遊玩方式／風格</span>
+          <span data-lang="en">Playstyle</span>
+          <span data-lang="ja">プレイスタイル</span>
+        </label>
+        <textarea name="style" rows="3" placeholder="建築 / 探索 / PvP 等"></textarea>
+      </div>
+
+      <div>
+        <label>
+          <span data-lang="zh">希望加入的王國</span>
+          <span data-lang="en">Preferred Kingdom</span>
+          <span data-lang="ja">希望する王国</span>
+        </label>
+        <select name="kingdom" required>
+          <option value="">-- 請選擇 --</option>
+          <option value="hestia">Hestia</option>
+          <option value="baisaya">Baisaya Federation</option>
+          <option value="yinti">Yinti Nation</option>
+          <option value="neutral">中立 / 海商</option>
+        </select>
+      </div>
+
+      <button type="submit">
+        <span data-lang="zh">送出申請</span>
+        <span data-lang="en">Submit</span>
+        <span data-lang="ja">送信</span>
+      </button>
+
+      <div class="success-message" id="successMsg">
+        ✅ <span data-lang="zh">表單送出成功，請等待審核！</span>
+        <span data-lang="en">Form submitted! Await approval.</span>
+        <span data-lang="ja">申請完了！承認をお待ちください。</span>
+      </div>
+    </form>
+  </section>
+
+  <!-- 導入頁尾 -->
+  <div id="footer-include"></div>
+
+  <!-- JS：導入 nav/footer、語言切換、表單送出效果 -->
+  <script>
+    // 語言切換
+    function setLang(lang) {
+      localStorage.setItem('lang', lang);
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = (el.dataset.lang === lang) ? 'inline' : 'none';
+      });
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const lang = localStorage.getItem('lang') || 'zh';
+      setLang(lang);
+    });
+
+    // nav/footer 載入
+    fetch('nav.html').then(res => res.text()).then(data => {
+      document.getElementById('nav-include').innerHTML = data;
+    });
+    fetch('footer.html').then(res => res.text()).then(data => {
+      document.getElementById('footer-include').innerHTML = data;
+    });
+
+    // 表單送出模擬
+    document.getElementById('joinForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('successMsg').style.display = 'block';
+      this.reset();
+    });
+  </script>
+</body>
+</html>
