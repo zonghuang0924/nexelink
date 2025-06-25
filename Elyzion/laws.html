@@ -97,49 +97,260 @@
   <script>
     const lang = localStorage.getItem('lang') || 'zh';
     const laws = [
-      {
-        code: "§001",
-        law: "憲法",
-        title: {
-          zh: "伺服器基本權利保障",
-          en: "Basic Server Rights",
-          ja: "基本的なサーバー権利保障"
-        },
-        content: {
-          zh: "所有玩家享有基本遊戲權利，包括發言、交易、移動與遊玩自由。",
-          en: "All players are entitled to basic gameplay rights including speech, trade, movement, and freedom of play.",
-          ja: "すべてのプレイヤーは、発言、取引、移動、自由なプレイなどの基本的な権利を有します。"
-        }
-      },
-      {
-        code: "§002",
-        law: "刑法",
-        title: {
-          zh: "禁止使用外掛程式",
-          en: "No External Hacks",
-          ja: "外部ツールの禁止"
-        },
-        content: {
-          zh: "禁止任何形式的外掛、作弊或修改客戶端行為，一經查獲將永久封禁。",
-          en: "Use of hacks, cheats, or any modified clients is strictly prohibited and will result in permanent ban.",
-          ja: "ハック、チート、または改造クライアントの使用は禁止され、永久BANの対象となります。"
-        }
-      },
-      {
-        code: "§003",
-        law: "民法",
-        title: {
-          zh: "財產保護條款",
-          en: "Property Protection Clause",
-          ja: "財産保護条項"
-        },
-        content: {
-          zh: "任何未經同意盜取、破壞他人建築與物品者，將依法懲處。",
-          en: "Unauthorized theft or destruction of others' buildings or items will be punished accordingly.",
-          ja: "他人の建築物やアイテムの無断盗用や破壊は、法により処罰されます。"
-        }
-      }
-    ];
+  {
+    code: "§001",
+    law: "憲法",
+    title: {
+      zh: "平等原則",
+      en: "Equality Principle",
+      ja: "平等の原則"
+    },
+    content: {
+      zh: "所有玩家在伺服器中享有平等權利，不得因等級、贊助與否受到歧視。",
+      en: "All players enjoy equal rights in the server regardless of rank or sponsorship.",
+      ja: "すべてのプレイヤーはランクやスポンサーの有無に関係なく平等な権利を有します。"
+    }
+  },
+  {
+    code: "§002",
+    law: "憲法",
+    title: {
+      zh: "財產保護權",
+      en: "Property Protection",
+      ja: "財産保護の権利"
+    },
+    content: {
+      zh: "玩家合法取得之建築、箱子、物品均享有完整財產權，禁止他人侵占或竊取。",
+      en: "Players legally owning buildings or items have full property rights. No one may steal or invade them.",
+      ja: "プレイヤーが合法的に取得した建築物やアイテムは完全な財産権が保護されます。他人の侵害は禁止されています。"
+    }
+  },
+  {
+    code: "§003",
+    law: "憲法",
+    title: {
+      zh: "言論自由（有限）",
+      en: "Limited Freedom of Speech",
+      ja: "制限付き言論の自由"
+    },
+    content: {
+      zh: "玩家可於聊天頻道自由發言，但不得違反公序良俗（禁止謾罵、歧視、洗頻等）。",
+      en: "Players may speak freely, but must not violate public decency (no abuse, discrimination, or spamming).",
+      ja: "プレイヤーは自由に発言できますが、公序良俗に反する行為（侮辱、差別、スパムなど）は禁止されます。"
+    }
+  },
+  {
+    code: "§004",
+    law: "憲法",
+    title: {
+      zh: "隱私與資訊保護",
+      en: "Privacy and Information Protection",
+      ja: "プライバシーと情報保護"
+    },
+    content: {
+      zh: "玩家之登入資訊、IP、建築位置、遊戲資料僅限管理團隊查閱，不得公開。",
+      en: "Login info, IP, locations, and game data are viewable only by staff and shall not be disclosed.",
+      ja: "ログイン情報、IP、建築場所、ゲームデータは運営チームのみが確認でき、公開は禁止です。"
+    }
+  },
+  {
+    code: "§005",
+    law: "憲法",
+    title: {
+      zh: "正當程序與申訴權",
+      en: "Due Process and Appeal Rights",
+      ja: "正当な手続きと申立ての権利"
+    },
+    content: {
+      zh: "遭處罰者可透過 Discord 提出申訴，管理團隊需提供合理說明與判例。",
+      en: "Punished players may appeal via Discord. Admins must respond with reason and precedent.",
+      ja: "処罰されたプレイヤーは Discord で異議申し立てが可能であり、管理側は理由と前例を提示する必要があります。"
+    }
+  },
+  {
+    code: "§201",
+    law: "民法",
+    title: {
+      zh: "建築爭議處理",
+      en: "Building Dispute Handling",
+      ja: "建築物争いの処理"
+    },
+    content: {
+      zh: "以管理員拍照記錄與目擊證人為依據，玩家可主動申請建築登記。",
+      en: "Admins' records and witness accounts are used for dispute handling. Players may register builds.",
+      ja: "管理者の記録と目撃証言に基づいて処理され、プレイヤーは建築物の登録を申請できます。"
+    }
+  },
+  {
+    code: "§202",
+    law: "民法",
+    title: {
+      zh: "交易與詐騙處理",
+      en: "Trade and Fraud Handling",
+      ja: "取引および詐欺の対処"
+    },
+    content: {
+      zh: "交易應打字確認，違約者將列入黑名單，屆期不處理將被懲處。",
+      en: "Trades must be text-confirmed. Breachers are blacklisted and punished if unaddressed.",
+      ja: "取引は文字で確認する必要があり、違反者はブラックリストに登録され、対処しない場合は処罰されます。"
+    }
+  },
+  {
+    code: "§203",
+    law: "民法",
+    title: {
+      zh: "聲譽保護制度",
+      en: "Reputation Protection System",
+      ja: "名誉保護制度"
+    },
+    content: {
+      zh: "可向管理員請求澄清公告，誹謗者須公開更正。",
+      en: "Players may request a clarification post. Defamers must publicly correct their statements.",
+      ja: "管理者に説明を要請でき、誹謗した者は公開で訂正しなければなりません。"
+    }
+  },
+  {
+    code: "§204",
+    law: "民法",
+    title: {
+      zh: "共建建築爭議",
+      en: "Co-Build Dispute",
+      ja: "共建築トラブル"
+    },
+    content: {
+      zh: "未立約視為共有，管理員得凍結區塊協調處理。",
+      en: "Without contract, builds are shared. Admins may freeze areas for mediation.",
+      ja: "契約がない場合は共有物とみなし、管理者がエリアを凍結して調整します。"
+    }
+  },
+  {
+    code: "§301",
+    law: "刑法",
+    title: {
+      zh: "破壞罪",
+      en: "Destruction",
+      ja: "破壊罪"
+    },
+    content: {
+      zh: "蓄意破壞他人建築、設施。第一次警告，第二次永久封鎖。",
+      en: "Intentional destruction. 1st offense: warning. 2nd: permanent ban.",
+      ja: "意図的な破壊。初回は警告、再犯は永久BAN。"
+    }
+  },
+  {
+    code: "§302",
+    law: "刑法",
+    title: {
+      zh: "竊盜罪",
+      en: "Theft",
+      ja: "窃盗罪"
+    },
+    content: {
+      zh: "偷竊箱子物品、收割他人作物。暫時封鎖3~7天，累犯永久封鎖。",
+      en: "Stealing items or crops. Ban 3–7 days. Repeat: permanent ban.",
+      ja: "アイテムや作物の盗難。3〜7日のBAN。再犯は永久BAN。"
+    }
+  },
+  {
+    code: "§303",
+    law: "刑法",
+    title: {
+      zh: "外掛罪",
+      en: "Hacking",
+      ja: "チート罪"
+    },
+    content: {
+      zh: "使用飛行、穿牆、加速、X-Ray。第一次永久封鎖並公開處罰。",
+      en: "Flying, wall-hack, speed, X-Ray. 1st offense: permanent ban + public notice.",
+      ja: "飛行、壁抜け、加速、X-Ray。初回で永久BAN + 公開処罰。"
+    }
+  },
+  {
+    code: "§304",
+    law: "刑法",
+    title: {
+      zh: "誹謗罪",
+      en: "Defamation",
+      ja: "名誉毀損罪"
+    },
+    content: {
+      zh: "散布謠言、假冒管理員、辱罵他人。禁言+公開更正，嚴重者封鎖。",
+      en: "Rumors, impersonating staff, or insults. Mute + correction. Severe: ban.",
+      ja: "噂の流布、管理者のなりすまし、侮辱。ミュート + 訂正。重度はBAN。"
+    }
+  },
+  {
+    code: "§305",
+    law: "刑法",
+    title: {
+      zh: "擾亂秩序罪",
+      en: "Disruption",
+      ja: "秩序妨害罪"
+    },
+    content: {
+      zh: "洗頻、搶頻、惡意挑釁。警告 + 5~30分鐘禁言。",
+      en: "Spamming, flooding, provocation. Warning + 5–30 min mute.",
+      ja: "スパム、チャット妨害、挑発。警告 + 5〜30分ミュート。"
+    }
+  },
+  {
+    code: "§306",
+    law: "刑法",
+    title: {
+      zh: "妨害公共安全罪",
+      en: "Public Safety Violation",
+      ja: "公共安全妨害罪"
+    },
+    content: {
+      zh: "發佈惡意連結、釣魚網站。永久封鎖 + 黑名單公示。",
+      en: "Malicious links, phishing. Permanent ban + blacklist.",
+      ja: "悪質リンク、フィッシング。永久BAN + ブラックリスト公開。"
+    }
+  },
+  {
+    code: "§307",
+    law: "刑法",
+    title: {
+      zh: "偽造證據罪",
+      en: "Evidence Forgery",
+      ja: "証拠偽造罪"
+    },
+    content: {
+      zh: "偽造截圖、抹黑他人謊報。停權7日 + Discord 處分。",
+      en: "Forged screenshots or false reporting. 7-day suspension + Discord penalty.",
+      ja: "偽のスクショ、虚偽報告。7日間の停止 + Discord制裁。"
+    }
+  },
+  {
+    code: "§401",
+    law: "仲裁制度",
+    title: {
+      zh: "實施與申訴程序",
+      en: "Implementation and Appeals",
+      ja: "施行と申立て手続き"
+    },
+    content: {
+      zh: "所有玩家進入伺服器即視為同意本法。可於 Discord ⁠｜🧐《檢舉》 提出申訴，管理員於48小時內處理。",
+      en: "By joining, all players agree to these laws. Appeals via Discord must be answered within 48 hrs.",
+      ja: "参加をもって規則に同意したものとみなし、Discordでの申立ては48時間以内に対応します。"
+    }
+  },
+  {
+    code: "§402",
+    law: "仲裁制度",
+    title: {
+      zh: "審查與公告",
+      en: "Review and Public Notice",
+      ja: "審査と公示"
+    },
+    content: {
+      zh: "由五位管理員組成之審查委員會處理重大爭議，並將重大違規公告於伺服器法院頻道。",
+      en: "A 5-admin committee handles disputes. Major cases are announced publicly.",
+      ja: "5人の管理者による審査委員会が重大な紛争を処理し、重大な違反は公開されます。"
+    }
+  }
+];
+
 
     function renderLaws(filter = 'all', keyword = '') {
       const list = document.getElementById('law-list');
