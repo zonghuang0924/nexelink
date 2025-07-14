@@ -5,13 +5,9 @@ import Redis from 'ioredis';
 import connectRedis from 'connect-redis';
 import nodemailer from 'nodemailer';
 
-import memberRouter from './api/member.js';
+import registerRouter from './api/register.js';
 import loginRouter from './api/login.js';
 import sessionRouter from './api/check-session.js';
-import userProfileRouter from './api/user-profile.js';
-import updateProfileRouter from './api/update-profile.js';
-import ordersRouter from './api/orders.js';
-import reviewRoutes from './api/reviews.js';
 
 const app = express();
 const RedisStore = connectRedis(session);  // ✅ 這是 v6 正確寫法
@@ -19,12 +15,12 @@ const RedisStore = connectRedis(session);  // ✅ 這是 v6 正確寫法
 app.set('trust proxy', 1);
 
 app.use(cors({
-  origin: 'https://fjedu.online',
+  origin: 'https://',
   credentials: true,
 }));
 
 app.options('*', (req, res) => {
- res.header('Access-Control-Allow-Origin', 'https://fjedu.online');
+ res.header('Access-Control-Allow-Origin', 'https://');
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
@@ -35,7 +31,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 async function startServer() {
-  const redisClient = new Redis('redis://default:mzxNyvzKSwdZzulgKQSedOnHRyBTiyFY@switchyard.proxy.rlwy.net:39910');
+  const redisClient = new Redis('');
 
   redisClient.on('connect', () => console.log('✅ Redis 連線成功'));
   redisClient.on('error', err => console.error('❌ Redis 錯誤:', err));
@@ -55,13 +51,9 @@ async function startServer() {
     }
   }));
 
-  app.use('/api', memberRouter);
+  app.use('/api', registerRouter);
   app.use('/api', loginRouter);
   app.use('/api', sessionRouter);
-  app.use('/api', userProfileRouter);
-  app.use('/api', updateProfileRouter);
-  app.use('/api', ordersRouter);
-  app.use('/api', reviewRoutes);
 
   app.use((req, res, next) => {
   console.log('Session:', req.session);
