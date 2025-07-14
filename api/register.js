@@ -9,7 +9,7 @@ const router = express.Router();
 //}); 
 
 // 註冊 API
-router.post('/member', async (req, res) => {
+router.post('/register', async (req, res) => {
   const { username, email, password } = req.body;
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
